@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { ChapterDrawer, LoginDrawer } from './App.components/Drawer/Drawer.controller'
 /* import { Gdpr } from './App.components/Gdpr/Gdpr.controller' */
-import { HamburgerLeft, HamburgerRight } from './App.components/Hamburger/Hamburger.controller'
+import { HamburgerLeft } from './App.components/Hamburger/Hamburger.controller'
 import { Header } from './App.components/Header/Header.controller'
 import { ProgressBar } from './App.components/ProgressBar/ProgressBar.controller'
 import { Toaster } from './App.components/Toaster/Toaster.controller'
@@ -19,7 +19,6 @@ export const App = () => (
       <ChapterDrawer />
       <HamburgerLeft />
       <LoginDrawer />
-      <HamburgerRight />
       <AppView />
       <Toaster />
       <ProgressBar />
