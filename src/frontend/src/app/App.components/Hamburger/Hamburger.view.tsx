@@ -6,8 +6,7 @@ import {
   HamburgerInnerBottom,
   HamburgerInnerMiddle,
   HamburgerInnerTop,
-  HamburgerStyledLeft,
-  HamburgerStyledRight
+  HamburgerStyledLeft
 } from './Hamburger.style'
 
 // direction: left true, right false
@@ -26,16 +25,6 @@ export const HamburgerViewLeft = ({ activated, activateCallback }: HamburgerView
   </HamburgerStyledLeft>
 )
 
-// Only visible when the screen is < 1130px
-export const HamburgerViewRight = ({ activated, activateCallback }: HamburgerViewProps) => (
-  <HamburgerStyledRight onClick={() => activateCallback()}>
-    <HamburgerBox>
-      <HamburgerInnerTop className={`${activated}`} />
-      <HamburgerInnerMiddle />
-      <HamburgerInnerBottom className={`${activated}`} />
-    </HamburgerBox>
-  </HamburgerStyledRight>
-)
 
 HamburgerViewLeft.propTypes = {
   activated: PropTypes.bool,
@@ -46,11 +35,3 @@ HamburgerViewLeft.defaultProps = {
   activated: false,
 }
 
-HamburgerViewRight.propTypes = {
-  activated: PropTypes.bool,
-  activateCallback: PropTypes.func,
-}
-
-HamburgerViewRight.defaultProps = {
-  activated: false,
-}
