@@ -303,7 +303,7 @@ export const HomeContainer = styled.div`
         }
 
         @media (max-width: 968px) {
-          top: 120px;
+          top: 100px;
           left: calc(50% - 115px);
 
           img {
@@ -370,6 +370,7 @@ export const HomeContainer = styled.div`
         @media (max-width: 968px) {
           font-size: 33px;
           margin-bottom: 220px;
+          margin-top: 45px;
         }
       }
 
@@ -382,6 +383,7 @@ export const HomeContainer = styled.div`
 
         @media (max-width: 968px) {
           flex-direction: column;
+          padding-bottom: 34px;
         }
         
 
@@ -431,6 +433,7 @@ export const HomeContainer = styled.div`
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          margin-top: 35px;
         }
 
         .description {
@@ -591,7 +594,7 @@ export const HomeContainer = styled.div`
             margin-top: 113px;
 
             @media (max-width: 968px) {
-              margin-top: 68px;
+              margin-top: 57px;
             }
           }
 

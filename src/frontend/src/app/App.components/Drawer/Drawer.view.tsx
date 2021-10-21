@@ -6,6 +6,8 @@ import { PublicUser } from 'shared/user/PublicUser'
 
 import { ChapterData } from '../../../pages/Chapter/Chapter.controller'
 import { chaptersByCourse } from '../../../pages/Course/Course.data'
+import { Button } from '../Button/Button.controller'
+import { MainFooter } from '../MainFooter/MainFooter.controller'
 // PLACEHOLDER.
 import { Option } from '../Select/Select.view'
 import { DrawerItem, DrawerMask, DrawerStyled, DrawerStyledLogin } from './Drawer.style'
@@ -45,7 +47,19 @@ export const ChapterDrawerView = ({
   <>
     <DrawerMask className={`${showingChapters}`} onClick={() => hideCallback()} />
     <DrawerStyled className={`${showingChapters}`}>
-      <h1>Chapters</h1>
+      <div className={'top'}>
+        <div className={'arrow-box'} onClick={() => hideCallback()}>
+          <img src="images/sideMenu/arrow.svg" alt="" />
+        </div>
+        <div className={'name-box'} />
+      </div>
+      <div className={'logo-sideMenu'}>
+        <img src="images/sideMenu/logo.png" alt="" />
+      </div>
+      <div className={'title-box'}>
+        <h1 className={'title'}>Chapters</h1>
+      </div>
+      
 
       {/* <Select
         options={[
@@ -56,13 +70,28 @@ export const ChapterDrawerView = ({
         selectCallback={(e) => changeCourseCallback(e)}
       /> */}
 
-      {chaptersByCourse[activeCourse.path].map((chapter: ChapterData) => (
+      {chaptersByCourse[activeCourse.path].map((chapter: ChapterData, key: number) => (
         <DrawerItem key={chapter.pathname} className={pathname === chapter.pathname ? 'current-path' : 'other-path'}>
-          <Link to={chapter.pathname} onClick={() => hideCallback()}>
-            {chapter.name}
+          <Link className={ key+1 < 5 ? 'checked': ''} to={chapter.pathname} onClick={() => hideCallback()}>
+            <span className={'number'}>{key + 1}</span>
+            <span className={'name-link'}>{chapter.name}</span>
           </Link>
         </DrawerItem>
       ))}
+
+      <div className={'btn-items'}>
+        <div className={'btn-item'}>
+          <Link to="/sign-up">
+            <Button text="Sign up for free" color="gradient"/>
+          </Link>
+        </div> 
+        <div className={'btn-item'}>
+          <Link to="/login">
+            <Button text="Log in" color="primary"/>
+          </Link>
+        </div> 
+      </div>
+      <MainFooter mobileFooter />
     </DrawerStyled>
   </>
 )
