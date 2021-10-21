@@ -6,13 +6,21 @@ import {Link} from "react-router-dom";
 import {PublicUser} from "../../../shared/user/PublicUser";
 
 type FooterViewProps = {
-    user?: PublicUser
+    user?: PublicUser,
+    mobileFooter?: boolean | undefined;
 }
 
-export const ViewMainFooter  = ({user}: FooterViewProps) => {
+export const ViewMainFooter  = ({user, mobileFooter}: FooterViewProps) => {
     return (
       <Footer>
-        <div className={'footer-wrapper'}>
+        <div className={mobileFooter ? 'mobileFooterWrapp' : 'footer-wrapper'}>
+          <div className={'nav-items-mobile'}>
+              <ul>
+                <li className={'nav-item'}><Link to="/">About</Link></li>
+                <li className={'nav-item'}><Link to="/">Referral</Link></li>
+                <li className={'nav-item'}><Link to="/">Terms</Link></li>
+              </ul>
+            </div>
           <div className={'left-box'}>
             <div className={'copy-box'}>
                 © NEAR Academy – 2021
@@ -21,37 +29,36 @@ export const ViewMainFooter  = ({user}: FooterViewProps) => {
                 Designed by <Link to="/">Dan Podkovko</Link>
             </div>
           </div> 
-          <div className={'logo-box'}>
+          <div className={'logo-footer'}>
             <div className={'poweredBy'}>Powered by</div> <div className={'logo'} />
           </div> 
-          {/* <div className={'social-box'}>
-            
-          </div> */}
-          <div className={'nav-items'}>
-            <ul>
-              <li className={'nav-item'}><Link to="/">About</Link></li>
-              <li className={'nav-item'}><Link to="/">Referral</Link></li>
-              <li className={'nav-item'}><Link to="/">Terms</Link></li>
-            </ul>
-          </div>
-          <div className={'social-items'}>
-            <ul>
-              <li className={'nav-item'}>
-                <a href={'https://github.com/near'}>
-                  <img src={'images/main_footer/github.png'} alt="github icon" />
-                </a>
-              </li>
-              <li className={'nav-item'}>
-                <a href={'https://twitter.com/NEARProtocol'}>
-                  <img src={'images/main_footer/twitter.png'} alt="twitter icon" />
-                </a>
-              </li>
-              <li className={'nav-item'}>
-                <a href={'https://t.me/cryptonear'}>
-                  <img src={'images/main_footer/telegram.png'} alt="telegram icon" />
-                </a>
-              </li>
-            </ul>
+          <div className={'social-box'}>
+            <div className={'nav-items'}>
+              <ul>
+                <li className={'nav-item'}><Link to="/">About</Link></li>
+                <li className={'nav-item'}><Link to="/">Referral</Link></li>
+                <li className={'nav-item'}><Link to="/">Terms</Link></li>
+              </ul>
+            </div>
+            <div className={'social-items'}>
+              <ul>
+                <li className={'nav-item'}>
+                  <a href={'https://github.com/near'}>
+                    <img src={'images/main_footer/github.png'} alt="github icon" />
+                  </a>
+                </li>
+                <li className={'nav-item'}>
+                  <a href={'https://twitter.com/NEARProtocol'}>
+                    <img src={'images/main_footer/twitter.png'} alt="twitter icon" />
+                  </a>
+                </li>
+                <li className={'nav-item'}>
+                  <a href={'https://t.me/cryptonear'}>
+                    <img src={'images/main_footer/telegram.png'} alt="telegram icon" />
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
     </Footer>

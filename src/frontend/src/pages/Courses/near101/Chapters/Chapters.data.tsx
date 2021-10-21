@@ -13,42 +13,42 @@ import { data as chapter8 } from './Chapter-8'
 export const chapterData: ChapterData[] = [
   {
     pathname: `/${course.path}/chapter-1`,
-    name: '1 -  Why Should You Care?',
+    name: 'Welcome to the Internet of value',
     data: chapter1,
   },
   {
     pathname: `/${course.path}/chapter-2`,
-    name: '2 - Key concepts of Web3',
+    name: 'Key concepts of Web3',
     data: chapter2,
   },
   {
     pathname: `/${course.path}/chapter-3`,
-    name: '3 - What is NEAR?',
+    name: 'What is NEAR?',
     data: chapter3,
   },
   {
     pathname: `/${course.path}/chapter-4`,
-    name: '4 - NEAR Environment	',
+    name: 'NEAR Environment	',
     data: chapter4,
   },
   {
     pathname: `/${course.path}/chapter-5`,
-    name: '5 - On NEAR Contracts',
+    name: 'On NEAR Contracts',
     data: chapter5,
   },
   {
     pathname: `/${course.path}/chapter-6`,
-    name: '6 - Deploy the Meme Contract',
+    name: 'Deploy the Meme Contract',
     data: chapter6,
   },
   {
     pathname: `/${course.path}/chapter-7`,
-    name: '7 -  Build Your Interface',
+    name: 'Build Your Interface',
     data: chapter7,
   },
   {
     pathname: `/${course.path}/chapter-8`,
-    name: '8 - What Next',
+    name: 'What\'s Next',
     data: chapter8,
   }
 ]
