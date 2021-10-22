@@ -11,7 +11,8 @@ import { Route, Switch } from 'react-router-dom'
 
 import { Certificate } from 'pages/Certificate/Certificate.controller'
 import { ChangePassword } from 'pages/ChangePassword/ChangePassword.controller'
-import { Chapter } from 'pages/Chapter/Chapter.controller'
+/* import { Chapter } from 'pages/Chapter/Chapter.controller' */
+import { Chapter } from 'pages/ChapterPage/Chapter.controller'
 import { Course } from 'pages/Course/Course.controller'
 import { Error404 } from 'pages/Error404/Error404.controller'
 import { ForgotPassword } from 'pages/ForgotPassword/ForgotPassword.controller'

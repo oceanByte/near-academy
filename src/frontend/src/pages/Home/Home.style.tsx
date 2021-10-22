@@ -5,7 +5,6 @@ import { backgroundColorBody, FullPage, near3, subTextColor, textColor, textColo
 export const HomeStyled = styled.div`
   position: relative;
   background: ${backgroundColorBody};
-  padding-top: 90px;
 `
 
 export const HomePage = styled(FullPage)``
@@ -591,7 +590,7 @@ export const HomeContainer = styled.div`
           display: flex;
           align-items: center;
           & + .item {
-            margin-top: 113px;
+            margin-top: 84px;
 
             @media (max-width: 968px) {
               margin-top: 57px;

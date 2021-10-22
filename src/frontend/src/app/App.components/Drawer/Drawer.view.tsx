@@ -49,12 +49,12 @@ export const ChapterDrawerView = ({
     <DrawerStyled className={`${showingChapters}`}>
       <div className={'top'}>
         <div className={'arrow-box'} onClick={() => hideCallback()}>
-          <img src="images/sideMenu/arrow.svg" alt="" />
+          <img src="/images/sideMenu/arrow.svg" alt="" />
         </div>
         <div className={'name-box'} />
       </div>
       <div className={'logo-sideMenu'}>
-        <img src="images/sideMenu/logo.png" alt="" />
+        <img src="/images/sideMenu/logo.png" alt="" />
       </div>
       <div className={'title-box'}>
         <h1 className={'title'}>Chapters</h1>

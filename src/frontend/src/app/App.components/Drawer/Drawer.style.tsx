@@ -49,17 +49,15 @@ export const DrawerStyled = styled.div`
     height: 100%;
     padding-left: 30px;
     padding-right: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #E3E3E3;
 
     .arrow-box {
       margin-right: 18px;
     }
 
     .name-box {
-      /* font-weight: 600;
-      font-size: 20px;
-      line-height: 30px;
-      color: ${subTextColor}; */
-      background-image: url('images/sideMenu/nearAcademy.svg');
+      background-image: url('/images/sideMenu/nearAcademy.svg');
       background-repeat: no-repeat;
       background-position: center center;
       width: 156px;
@@ -117,7 +115,7 @@ export const DrawerItem = styled.div`
         content: '';
         width: 20px;
         height: 16px;
-        background-image: url('images/sideMenu/checked.svg');
+        background-image: url('/images/sideMenu/checked.svg');
         background-repeat: no-repeat;
         background-size: 20px 16px;
         right: 21px;

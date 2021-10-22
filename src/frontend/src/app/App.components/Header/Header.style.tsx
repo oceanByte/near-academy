@@ -6,13 +6,22 @@ export const HeaderStyled = styled.div`
   position: relative;
   text-align: center;
   height: 70px;
-  z-index: 1;
   background-color: ${backgroundColorLight};
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 30px;
   padding-right: 46px;
+
+  &.inChapter {
+    @media (max-width:600px) {
+      border-bottom: 1px solid #E3E3E3;
+    }
+  }
+
+  @media (max-width: 1130px) {
+    padding-left: 20px;
+  }
 `
 
 export const LeftContainer = styled.div`
@@ -21,7 +30,6 @@ export const LeftContainer = styled.div`
 
 export const HeaderLogo = styled.img`
   padding: 0px;
-  z-index: 1;
   margin: auto;
   @media (max-width: 450px) {
     max-width: 200px;
@@ -29,10 +37,14 @@ export const HeaderLogo = styled.img`
 `
 
 export const HeaderLoggedOut = styled.div`
-  display: flex;
-  align-items: center;
-  // grid-template-columns: auto auto auto auto;
-  // grid-gap: 10px;
+  .inChapter {
+    display: none;
+  }
+
+  .nav-wrapp {
+    display: flex;
+    align-items: center;
+  }
 
   @media (max-width: 1130px) {
     display: none;
@@ -60,6 +72,11 @@ export const HeaderLoggedIn = styled.div`
   grid-gap: 10px;
   text-transform: uppercase;
   transform: translate(0, -50%);
+
+  .nav-wrapp {
+    display: flex;
+    align-items: center;
+  }
 
   @media (max-width: 1130px) {
     display: none;
