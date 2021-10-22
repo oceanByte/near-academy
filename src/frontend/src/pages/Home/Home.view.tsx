@@ -1,14 +1,17 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import {MainFooter} from 'app/App.components/MainFooter/MainFooter.controller'
+import { Header } from 'app/App.components/Header/Header.controller'
+import { MainFooter } from 'app/App.components/MainFooter/MainFooter.controller'
 import { Button } from 'app/App.components/Button/Button.controller'
 
 //prettier-ignore
 import { HomeContainer, HomePage, HomeStyled } from './Home.style'
 
+
 export const HomeView = () => {
   return (
     <HomeStyled>
+      <Header />
       <HomePage>
         <HomeContainer>
           <section className={'main'}>

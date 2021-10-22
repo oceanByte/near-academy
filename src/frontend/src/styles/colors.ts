@@ -1,6 +1,8 @@
 export const backgroundColorBody = '#DBEAFE'
 export const backgroundColorDark = '#FFF'
 export const backgroundColorLight = '#FFF'
+export const backgroundColorChapter = '#071C43'
+export const progressColorGreen = '#22C55E'
 export const shadowColor = '#00000040'
 export const borderColor = '#272B40'
 export const textColor = '#64748B'

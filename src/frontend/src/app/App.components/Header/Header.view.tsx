@@ -10,60 +10,69 @@ import {Button} from "../Button/Button.controller";
 
 type HeaderViewProps = {
     user?: PublicUser
-    removeAuthUserCallback: () => void
+    removeAuthUserCallback: () => void,
+    inChapter?: boolean,
+}
+
+interface ILoggedOutHeader {
+    inChapter?: boolean,
 }
 
 // Overall Navbar
-export const HeaderView = ({user, removeAuthUserCallback}: HeaderViewProps) => {
+export const HeaderView = ({user, removeAuthUserCallback, inChapter}: HeaderViewProps) => {
     return (
-        <HeaderStyled>
+        <HeaderStyled className={inChapter? 'inChapter' : ''}>
             <LeftContainer>
                 <HamburgerLeft/>
                 <Link to="/">
                     <HeaderLogo alt="logo" width="179px" src="/logo.svg"/>
                 </Link>
             </LeftContainer>
-            {user ? loggedInHeader({user, removeAuthUserCallback}) : loggedOutHeader()}
+            {user ? loggedInHeader({user, removeAuthUserCallback, inChapter}) : loggedOutHeader({inChapter})}
         </HeaderStyled>
     )
 }
 
-function loggedOutHeader() {
+function loggedOutHeader({inChapter}: ILoggedOutHeader) {
   return (
     <HeaderLoggedOut>
-        <Link className={'get-started'} to="/near101/chapter-1">
-            <Button text="Start learning" color="primary"/>
-        </Link>
-      {/*<Link to="/terms">*/}
-      {/*  <HeaderMenuItem>TERMS</HeaderMenuItem>*/}
-      {/*</Link>*/}
-      <Link to="/sign-up">
-        <HeaderMenuItem>Sign up</HeaderMenuItem>
-      </Link>
-      <Link to="/login">
-        <HeaderMenuItem>Log in</HeaderMenuItem>
-      </Link>
+        <div className={inChapter? 'inChapter' : 'nav-wrapp'}>
+            <Link className={'get-started'} to="/near101/chapter-1">
+                <Button text="Start learning" color="primary"/>
+            </Link>
+            {/*<Link to="/terms">*/}
+            {/*  <HeaderMenuItem>TERMS</HeaderMenuItem>*/}
+            {/*</Link>*/}
+            <Link to="/sign-up">
+                <HeaderMenuItem>Sign up</HeaderMenuItem>
+            </Link>
+            <Link to="/login">
+                <HeaderMenuItem>Log in</HeaderMenuItem>
+            </Link>
+        </div>
     </HeaderLoggedOut>
   )
 }
 
-function loggedInHeader({user, removeAuthUserCallback}: HeaderViewProps) {
+function loggedInHeader({user, removeAuthUserCallback, inChapter}: HeaderViewProps) {
     return (
         <HeaderLoggedIn>
             {/*<Link to="/terms">*/}
             {/*    <HeaderMenuItem>TERMS</HeaderMenuItem>*/}
             {/*</Link>*/}
-            <Link to={`/user/${user?.username}`}>
-                <HeaderMenuItem>{user?.username}</HeaderMenuItem>
-            </Link>
-            <Link
-                to="/"
-                onClick={() => {
-                    removeAuthUserCallback()
-                }}
-            >
-                <HeaderMenuItem>LOGOUT</HeaderMenuItem>
-            </Link>
+            <div className={inChapter? 'inChapter' : 'nav-wrapp'}>
+                <Link to={`/user/${user?.username}`}>
+                    <HeaderMenuItem>{user?.username}</HeaderMenuItem>
+                </Link>
+                <Link
+                    to="/"
+                    onClick={() => {
+                        removeAuthUserCallback()
+                    }}
+                >
+                    <HeaderMenuItem>LOGOUT</HeaderMenuItem>
+                </Link>
+            </div>
         </HeaderLoggedIn>
     )
 }
