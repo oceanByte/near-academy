@@ -16,16 +16,17 @@ import { addProgress } from './Chapter.actions'
 import { PENDING, RIGHT, WRONG } from './Chapter.constants'
 import { ChapterLocked } from './Chapter.style'
 import { ChapterView } from './Chapter.view'
-import { Footer } from './Footer/Footer.controller'
 
 export interface ChapterData {
   pathname: string
+  pathSplash: string
   name: string
   data: Data
 }
 
 export type Question = {
   question: string
+  selectedText?: string
   answers: string[]
   responses: string[]
   proposedResponses?: string[]
@@ -33,6 +34,7 @@ export type Question = {
 
 export interface Data {
   course: string | undefined
+  splash: string | undefined
   exercise: string | undefined
   solution: string | undefined
   supports: Record<string, string | undefined>
@@ -46,6 +48,7 @@ export const Chapter = () => {
   const { pathname } = useLocation()
   const [data, setData] = useState<Data>({
     course: undefined,
+    splash: undefined,
     exercise: undefined,
     solution: undefined,
     supports: {},
@@ -64,15 +67,18 @@ export const Chapter = () => {
   })
   if (counter >= 20) badgeUnlocked = true
 
+
   useEffect(() => {
     if (user) dispatch(getUser({ username: user.username }))
 
     courseData.forEach((course: CourseData) => {
       const index = course.path!
+
       chaptersByCourse[index].forEach((chapter: ChapterData) => {
         if (pathname === chapter.pathname)
           setData({
             course: chapter.data.course,
+            splash: chapter.data.splash,
             exercise: chapter.data.exercise,
             solution: chapter.data.solution,
             supports: chapter.data.supports,
@@ -100,7 +106,7 @@ export const Chapter = () => {
       if (i - 1 >= 0) previousChapter = chapterData[i - 1].pathname
       percent = 0
       if (i + 1 < chapterData.length) {
-        nextChapter = chapterData[i + 1].pathname
+        nextChapter = chapterData[i + 1].pathSplash
       } else {
         if (user) nextChapter = `/user/${user.username}`
         else nextChapter = '/sign-up'
@@ -114,7 +120,7 @@ export const Chapter = () => {
     if (pathname === '/near101/chapter-8') {
       setValidatorState(RIGHT)
       if (user) dispatch(addProgress({ chapterDone: pathname }))
-      setIsPopup(true)
+      /* setIsPopup(true) */
       return
     }
 
@@ -134,9 +140,9 @@ export const Chapter = () => {
       })
       if (ok) {
         setValidatorState(RIGHT)
-        setIsPopup(true)
+        /* setIsPopup(true) */
         if (user) dispatch(addProgress({ chapterDone: pathname }))
-        else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate'))
+        /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
       } else setValidatorState(WRONG)
     } else {
       if (showDiff) {
@@ -152,15 +158,15 @@ export const Chapter = () => {
             data.solution.replace(/\s+|\/\/ Type your solution below/g, '')
           ) {
             setValidatorState(RIGHT)
-            setIsPopup(true)
+            /* setIsPopup(true) */
             if (user) dispatch(addProgress({ chapterDone: pathname }))
-            else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate'))
+            /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
           } else if (pathname === '/near101/chapter-3' && data.exercise.match(/^[a-z0-9_-]*.testnet/gm)) {
             setShowDiff(false)
             setValidatorState(RIGHT)
-            setIsPopup(true)
+            /* setIsPopup(true) */
             if (user) dispatch(addProgress({ chapterDone: pathname }))
-            else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate'))
+            /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
           } else setValidatorState(WRONG)
         } else setValidatorState(WRONG)
       }
@@ -201,11 +207,12 @@ export const Chapter = () => {
             supports={data.supports}
             questions={data.questions}
             nextChapter={nextChapter}
+            previousChapter={previousChapter}
             proposedQuestionAnswerCallback={proposedQuestionAnswerCallback}
+            percent={percent}
           />
         )
       )}
-      <Footer percent={percent} nextChapter={nextChapter} previousChapter={previousChapter} />
     </>
   )
 }

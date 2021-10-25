@@ -72,7 +72,7 @@ export const ChapterDrawerView = ({
 
       {chaptersByCourse[activeCourse.path].map((chapter: ChapterData, key: number) => (
         <DrawerItem key={chapter.pathname} className={pathname === chapter.pathname ? 'current-path' : 'other-path'}>
-          <Link className={ key+1 < 5 ? 'checked': ''} to={chapter.pathname} onClick={() => hideCallback()}>
+          <Link className={ key+1 < 5 ? 'checked': ''} to={chapter.pathSplash} onClick={() => hideCallback()}>
             <span className={'number'}>{key + 1}</span>
             <span className={'name-link'}>{chapter.name}</span>
           </Link>

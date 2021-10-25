@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useMediaQuery } from '@react-hook/media-query'
 import { Button } from '../Button/Button.controller'
-import { RIGHT, WRONG } from '../Editor/editor.constants'
+import { RIGHT, WRONG } from '../../../pages/Chapter/Chapter.constants'
 import { BtnsContainer, ButtonsShowResult, ErrorMessage } from './ButtonsShowResult.style'
 
 type ButtonsShowResultViewProps = {

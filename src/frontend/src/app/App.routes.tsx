@@ -11,8 +11,8 @@ import { Route, Switch } from 'react-router-dom'
 
 import { Certificate } from 'pages/Certificate/Certificate.controller'
 import { ChangePassword } from 'pages/ChangePassword/ChangePassword.controller'
-/* import { Chapter } from 'pages/Chapter/Chapter.controller' */
-import { Chapter } from 'pages/ChapterPage/Chapter.controller'
+import { Chapter } from 'pages/Chapter/Chapter.controller'
+import { Splash } from 'pages/SplashChapter/SplashChapter.controller'
 import { Course } from 'pages/Course/Course.controller'
 import { Error404 } from 'pages/Error404/Error404.controller'
 import { ForgotPassword } from 'pages/ForgotPassword/ForgotPassword.controller'
@@ -24,6 +24,7 @@ import { Terms } from 'pages/Terms/Terms.controller'
 import { Invite } from 'pages/Invite/Invite.controller'
 import { User } from 'pages/User/User.controller'
 import {ThankYou} from "../pages/ThankYou/ThankYou.controller";
+
 // import { About } from 'pages/About/About.controller'
 
 
@@ -52,6 +53,9 @@ export const AppRoutes = ({ location }: any) => (
     </Route>
     <Route path="/*/chapter-*">
       <Chapter />
+    </Route>
+    <Route path="/*/splash-*">
+      <Splash />
     </Route>
     <Route exact path="/user/:username">
       <User />

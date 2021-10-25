@@ -92,7 +92,8 @@ export const ErrorMessage = styled.div`
   margin-bottom: 15px;
   position: absolute;
   bottom: 160px;
-  right: 24%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 999;
   max-width: 235px;
 `
