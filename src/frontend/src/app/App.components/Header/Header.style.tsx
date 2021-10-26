@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-import { bgTextColor, backgroundColorLight, primaryColor, textColorMenuItem } from 'styles'
+import { bgTextColor, backgroundColorLight, primaryColor, textColorMenuItem, backgroundColorChapter } from 'styles'
 
 export const HeaderStyled = styled.div`
   position: relative;
@@ -17,6 +17,9 @@ export const HeaderStyled = styled.div`
     @media (max-width:600px) {
       border-bottom: 1px solid #E3E3E3;
     }
+  }
+  &.authPage {
+    background-color: transparent;
   }
 
   @media (max-width: 1130px) {
@@ -37,14 +40,20 @@ export const HeaderLogo = styled.img`
 `
 
 export const HeaderLoggedOut = styled.div`
-  .inChapter {
-    display: none;
-  }
-
   .nav-wrapp {
     display: flex;
     align-items: center;
   }
+
+  .inChapter {
+    display: none;
+  }
+
+  .authPage {
+    display: none;
+  }
+
+  
 
   @media (max-width: 1130px) {
     display: none;

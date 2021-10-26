@@ -8,10 +8,11 @@ import { logout } from 'pages/Login/Login.actions'
 import { HeaderView } from './Header.view'
 
 interface IHeader {
-  inChapter?: boolean
+  inChapter?: boolean,
+  authPage?: boolean,
 }
 
-export const Header = ({ inChapter }: IHeader) => {
+export const Header = ({ inChapter, authPage }: IHeader) => {
   const dispatch = useDispatch()
   const user = useSelector((state: State) => state.auth.user)
 
@@ -23,9 +24,11 @@ export const Header = ({ inChapter }: IHeader) => {
     user={user}
     removeAuthUserCallback={removeAuthUserCallback}
     inChapter={inChapter}
+    authPage={authPage}
   />
 }
 
 Header.propTypes = {
   inChapter: PropTypes.bool,
+  authPage: PropTypes.bool,
 };

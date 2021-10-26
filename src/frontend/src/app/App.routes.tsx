@@ -13,6 +13,7 @@ import { Certificate } from 'pages/Certificate/Certificate.controller'
 import { ChangePassword } from 'pages/ChangePassword/ChangePassword.controller'
 import { Chapter } from 'pages/Chapter/Chapter.controller'
 import { Splash } from 'pages/SplashChapter/SplashChapter.controller'
+import { SplashFinished } from 'pages/SplashFinished/SplashFinished.controller'
 import { Course } from 'pages/Course/Course.controller'
 import { Error404 } from 'pages/Error404/Error404.controller'
 import { ForgotPassword } from 'pages/ForgotPassword/ForgotPassword.controller'
@@ -56,6 +57,9 @@ export const AppRoutes = ({ location }: any) => (
     </Route>
     <Route path="/*/splash-*">
       <Splash />
+    </Route>
+    <Route path="/finished">
+      <SplashFinished />
     </Route>
     <Route exact path="/user/:username">
       <User />
