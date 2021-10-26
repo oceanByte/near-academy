@@ -12,15 +12,16 @@ import {
 // direction: left true, right false
 type HamburgerViewProps = {
   activated: boolean
-  activateCallback: () => void
+  activateCallback: () => void,
+  authPage?: boolean
 }
 
-export const HamburgerViewLeft = ({ activated, activateCallback }: HamburgerViewProps) => (
+export const HamburgerViewLeft = ({ activated, activateCallback, authPage }: HamburgerViewProps) => (
   <HamburgerStyledLeft onClick={() => activateCallback()}>
     <HamburgerBox>
-      <HamburgerInnerTop className={`${activated}`} />
-      <HamburgerInnerMiddle />
-      <HamburgerInnerBottom className={`${activated}`} />
+      <HamburgerInnerTop className={`${activated}`} authPage={authPage} />
+      <HamburgerInnerMiddle authPage={authPage} />
+      <HamburgerInnerBottom className={`${activated}`} authPage={authPage} />
     </HamburgerBox>
   </HamburgerStyledLeft>
 )

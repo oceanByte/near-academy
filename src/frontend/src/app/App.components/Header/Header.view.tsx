@@ -1,6 +1,8 @@
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import {Link} from 'react-router-dom'
+import classnames from 'classnames'
+
 import {PublicUser} from 'shared/user/PublicUser'
 
 import {HamburgerLeft} from '../Hamburger/Hamburger.controller'
@@ -12,32 +14,47 @@ type HeaderViewProps = {
     user?: PublicUser
     removeAuthUserCallback: () => void,
     inChapter?: boolean,
+    authPage?: boolean,
 }
 
 interface ILoggedOutHeader {
     inChapter?: boolean,
+    authPage?: boolean,
 }
 
 // Overall Navbar
-export const HeaderView = ({user, removeAuthUserCallback, inChapter}: HeaderViewProps) => {
+export const HeaderView = ({user, removeAuthUserCallback, inChapter, authPage}: HeaderViewProps) => {
     return (
-        <HeaderStyled className={inChapter? 'inChapter' : ''}>
+        <HeaderStyled className={classnames(
+                inChapter && 'inChapter',
+                authPage && 'authPage'
+            )}>
             <LeftContainer>
-                <HamburgerLeft/>
+                <HamburgerLeft authPage={authPage} />
                 <Link to="/">
-                    <HeaderLogo alt="logo" width="179px" src="/logo.svg"/>
+                    {authPage ? (
+                        <HeaderLogo alt="logo" width="179px" src="/images/splash/logo-white.svg"/>
+                    ) : (
+                        <HeaderLogo alt="logo" width="179px" src="/logo.svg"/>
+                    )}
+                    
                 </Link>
             </LeftContainer>
-            {user ? loggedInHeader({user, removeAuthUserCallback, inChapter}) : loggedOutHeader({inChapter})}
+            {user ? loggedInHeader({user, removeAuthUserCallback, inChapter}) : loggedOutHeader({inChapter, authPage})}
         </HeaderStyled>
     )
 }
 
-function loggedOutHeader({inChapter}: ILoggedOutHeader) {
+function loggedOutHeader({inChapter, authPage}: ILoggedOutHeader) {
   return (
     <HeaderLoggedOut>
-        <div className={inChapter? 'inChapter' : 'nav-wrapp'}>
-            <Link className={'get-started'} to="/near101/chapter-1">
+        <div className={
+            classnames(
+                'nav-wrapp',
+                inChapter && 'inChapter',
+                authPage && 'authPage'
+            )}>
+            <Link className={'get-started'} to="/near101/splash-1">
                 <Button text="Start learning" color="primary"/>
             </Link>
             {/*<Link to="/terms">*/}

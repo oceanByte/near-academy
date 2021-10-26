@@ -5,7 +5,11 @@ import { HamburgerViewLeft } from './Hamburger.view'
 import { showChapterDrawer, hideChapterDrawer, hideMenuDrawer, showMenuDrawer } from '../Drawer/Drawer.actions'
 import { State } from 'reducers'
 
-export const HamburgerLeft = () => {
+type HamburgerLeftProps = {
+  authPage?: boolean
+}
+
+export const HamburgerLeft = ({ authPage }: HamburgerLeftProps) => {
   const dispatch = useDispatch()
   const activated = useSelector((state: State) => state.chapterDrawer.showingChapter)
 
@@ -13,6 +17,6 @@ export const HamburgerLeft = () => {
     dispatch(activated ? hideChapterDrawer() : showChapterDrawer())
   }
 
-  return <HamburgerViewLeft activated={activated} activateCallback={activateCallback} />
+  return <HamburgerViewLeft activated={activated} activateCallback={activateCallback} authPage={authPage} />
 }
 

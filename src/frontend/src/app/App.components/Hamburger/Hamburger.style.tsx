@@ -2,7 +2,7 @@ import styled from 'styled-components/macro'
 
 
 // prettier-ignore
-import { HamburgerBottomBackward, HamburgerBottomForward, HamburgerTopBackward, HamburgerTopForward, textColor } from '../../../styles'
+import { HamburgerBottomBackward, HamburgerBottomForward, HamburgerTopBackward, HamburgerTopForward, textColor, backgroundColorLight } from '../../../styles'
 
 export const HamburgerStyledLeft = styled.div`
   margin-right: 17px;
@@ -27,8 +27,12 @@ export const HamburgerInner = styled.div`
   background-color: ${textColor};
 `
 
-export const HamburgerInnerTop = styled(HamburgerInner)`
+export const HamburgerInnerTop = styled(HamburgerInner)<{ authPage?: boolean }>`
   top: 0;
+  ${({ authPage }) => authPage && `
+    background-color: ${backgroundColorLight};
+  `}
+  
 
   &.true {
     animation: ${HamburgerTopForward} 1s linear;
@@ -41,13 +45,19 @@ export const HamburgerInnerTop = styled(HamburgerInner)`
   }
 `
 
-export const HamburgerInnerMiddle = styled(HamburgerInner)`
+export const HamburgerInnerMiddle = styled(HamburgerInner)<{ authPage?: boolean }>`
+  ${({ authPage }) => authPage && `
+    background-color: ${backgroundColorLight};
+  `}
   display: block;
   top: calc(50% - 1px);
 `
 
-export const HamburgerInnerBottom = styled(HamburgerInner)`
+export const HamburgerInnerBottom = styled(HamburgerInner)<{ authPage?: boolean }>`
   bottom: 1px;
+  ${({ authPage }) => authPage && `
+    background-color: ${backgroundColorLight};
+  `}
 
   &.true {
     animation: ${HamburgerBottomForward} 1s linear;
