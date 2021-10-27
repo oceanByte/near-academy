@@ -25,6 +25,7 @@ import { Terms } from 'pages/Terms/Terms.controller'
 import { Invite } from 'pages/Invite/Invite.controller'
 import { User } from 'pages/User/User.controller'
 import {ThankYou} from "../pages/ThankYou/ThankYou.controller";
+import { LayoutViewAuth } from './App.components/LayoutAuth/Layout.view'
 
 // import { About } from 'pages/About/About.controller'
 
@@ -35,10 +36,14 @@ export const AppRoutes = ({ location }: any) => (
       <Home />
     </Route>
     <Route exact path="/sign-up">
-      <SignUp />
+      <LayoutViewAuth>
+        <SignUp />
+      </LayoutViewAuth>
     </Route>
     <Route exact path="/login">
-      <Login />
+      <LayoutViewAuth>
+        <Login />
+      </LayoutViewAuth>
     </Route>
     <Route exact path="/forgot-password">
       <ForgotPassword />

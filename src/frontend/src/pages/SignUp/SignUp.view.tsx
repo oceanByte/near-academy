@@ -1,4 +1,5 @@
 import { Button } from 'app/App.components/Button/Button.controller'
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
 import { InputSpacer } from 'app/App.components/Input/Input.style'
 //prettier-ignore
@@ -9,7 +10,7 @@ import { ChangeEvent, SyntheticEvent, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { SignUpInputs } from 'shared/user/SignUp'
 
-import { SignUpCard, SignUpLogin, SignUpStyled, SignUpTitle } from './SignUp.style'
+import { BtnContainer, Row, SignUpCard, SignUpStyled, SignUpTitle } from './SignUp.style'
 
 type SignUpViewProps = {
   signUpCallback: (values: any) => void
@@ -66,8 +67,6 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
     else setForm(updatedForm)
   }
 
-  console.log(form)
-
   return (
     <SignUpStyled>
       <SignUpTitle>
@@ -75,68 +74,79 @@ export const SignUpView = ({ signUpCallback, loading }: SignUpViewProps) => {
       </SignUpTitle>
       <SignUpCard>
         <form onSubmit={handleSubmit}>
-          <Input
-            icon="user"
-            name="username"
-            placeholder="Username"
-            type="text"
-            onChange={handleChange}
-            value={form.username.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.username)}
-            errorMessage={getErrorMessage(form.username)}
-          />
-          <Input
-            icon="email"
-            name="email"
-            placeholder="Email"
-            type="text"
-            onChange={handleChange}
-            value={form.email.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.email)}
-            errorMessage={getErrorMessage(form.email)}
-          />
-          <Input
-            icon="password"
-            name="password"
-            placeholder="Password"
-            type="password"
-            onChange={handleChange}
-            value={form.password.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.password)}
-            errorMessage={getErrorMessage(form.password)}
-          />
-          <Input
-            icon="password"
-            name="confirmPassword"
-            placeholder="Confirm password"
-            type="password"
-            onChange={handleChange}
-            value={form.confirmPassword.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.confirmPassword)}
-            errorMessage={getErrorMessage(form.confirmPassword)}
-          />
-          <Input
-            icon="user"
-            name="referral"
-            placeholder="Referral"
-            type="text"
-            onChange={handleChange}
-            value={form.referral.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.referral)}
-            errorMessage={getErrorMessage(form.referral)}
-          />
-          <InputSpacer />
-          <Button type="submit" text="Sign Up" icon="sign-up" loading={loading} />
+          <Row>
+            <InputField
+              label="Username"
+              type="text"
+              value={form.username.value}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="username"
+              inputStatus={getInputStatus(form.username)}
+              errorMessage={getErrorMessage(form.username)}
+              isDisabled={false}
+            />
+          </Row>
+          <Row>
+            <InputField
+              label="Email"
+              type="text"
+              value={form.email.value}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="email"
+              inputStatus={getInputStatus(form.email)}
+              errorMessage={getErrorMessage(form.email)}
+              isDisabled={false}
+            />
+          </Row>
+          <Row>
+            <InputField
+              label="Password"
+              type="password"
+              value={form.password.value}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="password"
+              inputStatus={getInputStatus(form.password)}
+              errorMessage={getErrorMessage(form.password)}
+              isDisabled={false}
+            />
+          </Row>
+          <Row>
+            <InputField
+              label="Re-enter password"
+              type="password"
+              value={form.confirmPassword.value}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="confirmPassword"
+              inputStatus={getInputStatus(form.confirmPassword)}
+              errorMessage={getErrorMessage(form.confirmPassword)}
+              isDisabled={false}
+            />
+          </Row>
+          <Row>
+            <InputField
+              label="Referral"
+              type="text"
+              value={form.referral.value}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="referral"
+              inputStatus={getInputStatus(form.referral)}
+              errorMessage={getErrorMessage(form.referral)}
+              isDisabled={false}
+            />
+          </Row>
+          <BtnContainer>
+            <Button text="Sign up" color="gradient" type="submit" loading={loading} />
+          </BtnContainer>
         </form>
+        <div className={'alreadyBox'}>
+          Already have an account? <Link to="/login">Log in</Link>
+        </div>
       </SignUpCard>
-      <SignUpLogin>
-        <Link to="/login">Or login now!</Link>
-      </SignUpLogin>
     </SignUpStyled>
   )
 }

@@ -1,4 +1,5 @@
 import { Button } from 'app/App.components/Button/Button.controller'
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
 import { InputSpacer } from 'app/App.components/Input/Input.style'
 //prettier-ignore
@@ -9,7 +10,7 @@ import { ChangeEvent, SyntheticEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { LoginInputs } from 'shared/user/Login'
 
-import { LoginCard, LoginSignUp, LoginStyled, LoginTitle } from './Login.style'
+import { BtnContainer, LoginCard, LoginStyled, LoginTitle, Row } from './Login.style'
 
 type LoginViewProps = {
   loginCallback: (values: any) => void
@@ -49,37 +50,44 @@ export const LoginView = ({ loginCallback, loading }: LoginViewProps) => {
         <h1>Login</h1>
       </LoginTitle>
       <LoginCard>
-        <form onSubmit={handleSubmit}>
-          <Input
-            icon="user"
-            name="usernameOrEmail"
-            placeholder="Username or Email"
-            type="text"
-            onChange={handleChange}
-            value={form.usernameOrEmail.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.usernameOrEmail)}
-            errorMessage={getErrorMessage(form.usernameOrEmail)}
-          />
-          <Input
-            icon="password"
-            name="password"
-            placeholder="Password"
-            type="password"
-            onChange={handleChange}
-            value={form.password.value}
-            onBlur={handleBlur}
-            inputStatus={getInputStatus(form.password)}
-            errorMessage={getErrorMessage(form.password)}
-          />
-          <InputSpacer />
-          <Button type="submit" text="Login" icon="login" loading={loading} />
+      <form onSubmit={handleSubmit}>
+          <Row>
+            <InputField
+              label="Username"
+              type="text"
+              value={form.usernameOrEmail.value}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="usernameOrEmail"
+              inputStatus={getInputStatus(form.usernameOrEmail)}
+              errorMessage={getErrorMessage(form.usernameOrEmail)}
+              isDisabled={false}
+            />
+          </Row>
+          <Row>
+            <InputField
+              label="Password"
+              type="password"
+              value={form.password.value}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="password"
+              inputStatus={getInputStatus(form.password)}
+              errorMessage={getErrorMessage(form.password)}
+              isDisabled={false}
+            />
+            <div className={'forgot-password'}>
+              <Link to="/forgot-password">Forgot Password?</Link>
+            </div>
+          </Row>
+          <BtnContainer>
+            <Button text="Login" color="gradient" type="submit" loading={loading} />
+          </BtnContainer>
         </form>
+        <div className={'alreadyBox'}>
+          Don’t have an account? <Link to="/sign-up">Sign up</Link>
+        </div>
       </LoginCard>
-      <LoginSignUp>
-        <Link to="/sign-up">Or sign up now!</Link>
-        <Link to="/forgot-password">Forgot Password?</Link>
-      </LoginSignUp>
     </LoginStyled>
   )
 }
