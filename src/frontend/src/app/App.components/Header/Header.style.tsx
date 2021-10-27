@@ -20,6 +20,14 @@ export const HeaderStyled = styled.div`
   }
   &.authPage {
     background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    
+    @media (max-width: 1200px) {
+      border-bottom: 1px solid rgba(255,255,255, .2);
+    }
   }
 
   @media (max-width: 1130px) {

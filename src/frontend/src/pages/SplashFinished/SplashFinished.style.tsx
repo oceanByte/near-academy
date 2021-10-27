@@ -52,7 +52,11 @@ export const BoxImgRight = styled.div`
 `
 export const Wrapp = styled.div`
   max-width: 430px;
-  margin: 0 auto;
+  margin: 70px auto 0;
+
+  @media (max-width: 1200px) {
+    margin: 114px auto 0;
+  }
 `
 export const BoxLogo = styled.div`
   background-image: url('/images/splash/logo.png');

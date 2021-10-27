@@ -82,12 +82,12 @@ export const ChapterDrawerView = ({
       <div className={'btn-items'}>
         <div className={'btn-item'}>
           <Link to="/sign-up">
-            <Button text="Sign up for free" color="gradient"/>
+            <Button text="Sign up for free" color="gradient" onClick={() => hideCallback()} />
           </Link>
         </div> 
         <div className={'btn-item'}>
           <Link to="/login">
-            <Button text="Log in" color="primary"/>
+            <Button text="Log in" color="primary" onClick={() => hideCallback()} />
           </Link>
         </div> 
       </div>
