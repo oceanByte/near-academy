@@ -4,7 +4,7 @@ import { backgroundColorChapter, downColor, near3, near6, okColor, primaryColor,
 
 export const HiddenBlock = styled.div`
   width: 100%;
-  @media (max-width: 998px) {
+  @media (max-width: 1400px) {
     display: none;
   }
 `
@@ -12,13 +12,17 @@ export const HiddenBlock = styled.div`
 export const ChapterStyled = styled.div`
   display: flex;
 
-  @media (max-width: 998px) {
+  @media (max-width: 1400px) {
     flex-direction: column;
   }
 `
 export const ChapterCourse = styled.div`
   max-width: 960px;
   width: 100%;
+
+  @media (max-width: 1400px) {
+    max-width: 100%;
+  }
 `
 export const ChapterContentWrapp = styled.div`
   max-width: 751px;
@@ -28,6 +32,10 @@ export const ChapterContentWrapp = styled.div`
   font-size: 17px;
   line-height: 25px;
   color: ${textColor};
+
+  @media (max-width: 1400px) {
+    max-width: 100%;
+  }
 
   @media (min-width: 1130px) {
     padding-left: 30px;
@@ -85,6 +93,14 @@ export const QuoteContainer = styled.div`
     color: rgba(65, 41, 116,.8);
     max-width: 702px;
     width: 100%;
+  }
+
+  @media (max-width: 1400px) {
+    justify-content: flex-start;
+
+    .quote {
+      max-width: 100%;
+    }
   }
 `
 export const ChapterH1 = styled.div`
@@ -154,14 +170,7 @@ export const ChapterFixed = styled.div`
     max-width: 660px;
   }
 
-  @media (max-width: 1300px) {
-    max-width: 560px;
-  }
-  @media (max-width: 1100px) {
-    max-width: 500px;
-  }
-
-  @media (max-width: 998px) {
+  @media (max-width: 1400px) {
     max-width: 100%;
     margin: 0 auto;
     position: static;
@@ -196,7 +205,7 @@ export const Wrapp = styled.div`
   min-height: 100%;
   padding: 80px 30px 0 85px;
 
-  @media (max-width: 998px) {
+  @media (max-width: 1400px) {
     position: relative;
     height: 700px;
     padding: 48px 30px;
@@ -217,7 +226,11 @@ export const MonacoContainer = styled.div`
     bottom: 30px;
     right: 40px;
     z-index: 999;
+    width: 85%;
 
+    @media (max-width: 1400px) {
+      width: 93%;
+    }
     @media (max-width: 998px) {
       position: static;
     }
@@ -308,6 +321,9 @@ export const BackgroundContainer = styled.div`
 export const ImageContainer = styled.span`
   display: block;
   margin-top: 40px;
+  img {
+    width: 100%;
+  }
 `
 
 export const Spacer = styled.span`

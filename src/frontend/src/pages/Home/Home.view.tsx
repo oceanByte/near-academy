@@ -137,7 +137,7 @@ export const HomeView = () => {
               </div>
               <div className={'btnContainer'}>
                 <div className={'boxArrow'} />
-                <Link to="/near101/chapter-1">
+                <Link to="/near101/splash-1">
                   <Button text="Begin course now" color="gradient"/>
                 </Link>
               </div>

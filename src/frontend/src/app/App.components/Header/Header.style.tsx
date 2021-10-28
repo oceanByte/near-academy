@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-import { bgTextColor, backgroundColorLight, primaryColor, textColorMenuItem, backgroundColorChapter } from 'styles'
+import { bgTextColor, backgroundColorLight, primaryColor, textColorMenuItem, backgroundColorChapter, textColorWhite } from 'styles'
 
 export const HeaderStyled = styled.div`
   position: relative;
@@ -12,6 +12,7 @@ export const HeaderStyled = styled.div`
   justify-content: space-between;
   padding-left: 30px;
   padding-right: 46px;
+  color: ${textColorWhite};
 
   &.inChapter {
     @media (max-width:600px) {
@@ -24,6 +25,7 @@ export const HeaderStyled = styled.div`
     top: 0;
     right: 0;
     left: 0;
+    z-index: 1;
     
     @media (max-width: 1200px) {
       border-bottom: 1px solid rgba(255,255,255, .2);
@@ -32,6 +34,7 @@ export const HeaderStyled = styled.div`
 
   @media (max-width: 1130px) {
     padding-left: 20px;
+    padding-right: 20px;
   }
 `
 
@@ -81,22 +84,17 @@ export const HeaderLoggedOut = styled.div`
 `
 
 export const HeaderLoggedIn = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 0;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 10px;
-  text-transform: uppercase;
-  transform: translate(0, -50%);
-
   .nav-wrapp {
     display: flex;
     align-items: center;
   }
 
-  @media (max-width: 1130px) {
+  .inChapter {
     display: none;
+  }
+
+  .accountPage {
+    display: flex;
   }
 `
 
@@ -109,27 +107,43 @@ export const HeaderMenuItem = styled.div`
   display: inline-block;
   padding: 0 20px;
 
-  &.login {
-    background-color: ${primaryColor};
-    color: ${bgTextColor};
-    width: 128px;
-    display: grid;
-    grid-template-columns: auto 50px;
-    text-align: right;
+  &.accountPage {
+    color: ${textColorWhite};
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
 
-    > div {
-      line-height: 50px;
-    }
-
-    > svg {
-      height: 28px;
-      width: 28px;
-      margin: 11px;
-      stroke: ${bgTextColor};
+    @media (max-width: 992px) {
+      display: none;
     }
   }
 
   @media (max-width: 1440px) {
     padding: 0 10px;
+  }
+`
+export const HeaderMenuIcon = styled.div`
+  &.userIconAccount {
+    width: 26px;
+    height: 26px;
+    background-image: url('/images/Account/profile.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+
+    @media (min-width: 992px) {
+      display: none;
+    }
+  }
+  &.userIconLogout {
+    width: 24px;
+    height: 24px;
+    background-image: url('/images/Account/logout.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @media (min-width: 992px) {
+      display: none;
+    }
   }
 `

@@ -25,10 +25,11 @@ import { Terms } from 'pages/Terms/Terms.controller'
 import { Invite } from 'pages/Invite/Invite.controller'
 import { User } from 'pages/User/User.controller'
 import {ThankYou} from "../pages/ThankYou/ThankYou.controller";
-import { LayoutViewAuth } from './App.components/LayoutAuth/Layout.view'
+
+import { LayoutAuthView } from './App.components/Layout/LayoutAuth/LayoutAuth.view'
+import { LayoutAccountView } from './App.components/Layout/LayoutAccount/LayoutAccount.view'
 
 // import { About } from 'pages/About/About.controller'
-
 
 export const AppRoutes = ({ location }: any) => (
   <Switch location={location}>
@@ -36,14 +37,14 @@ export const AppRoutes = ({ location }: any) => (
       <Home />
     </Route>
     <Route exact path="/sign-up">
-      <LayoutViewAuth>
+      <LayoutAuthView>
         <SignUp />
-      </LayoutViewAuth>
+      </LayoutAuthView>
     </Route>
     <Route exact path="/login">
-      <LayoutViewAuth>
+      <LayoutAuthView>
         <Login />
-      </LayoutViewAuth>
+      </LayoutAuthView>
     </Route>
     <Route exact path="/forgot-password">
       <ForgotPassword />
@@ -67,7 +68,9 @@ export const AppRoutes = ({ location }: any) => (
       <SplashFinished />
     </Route>
     <Route exact path="/user/:username">
-      <User />
+      <LayoutAccountView>
+        <User />
+      </LayoutAccountView>
     </Route>
     <Route exact path="/certificate/:username">
       <Certificate />

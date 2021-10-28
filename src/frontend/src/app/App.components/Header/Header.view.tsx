@@ -7,7 +7,7 @@ import {PublicUser} from 'shared/user/PublicUser'
 
 import {HamburgerLeft} from '../Hamburger/Hamburger.controller'
 // prettier-ignore
-import {HeaderLoggedIn, HeaderLoggedOut, HeaderLogo, HeaderMenuItem, HeaderStyled, LeftContainer} from "./Header.style";
+import {HeaderLoggedIn, HeaderLoggedOut, HeaderLogo, HeaderMenuIcon, HeaderMenuItem, HeaderStyled, LeftContainer} from "./Header.style";
 import {Button} from "../Button/Button.controller";
 
 type HeaderViewProps = {
@@ -15,6 +15,7 @@ type HeaderViewProps = {
     removeAuthUserCallback: () => void,
     inChapter?: boolean,
     authPage?: boolean,
+    accountPage?: boolean,
 }
 
 interface ILoggedOutHeader {
@@ -23,7 +24,7 @@ interface ILoggedOutHeader {
 }
 
 // Overall Navbar
-export const HeaderView = ({user, removeAuthUserCallback, inChapter, authPage}: HeaderViewProps) => {
+export const HeaderView = ({user, removeAuthUserCallback, inChapter, authPage, accountPage}: HeaderViewProps) => {
     return (
         <HeaderStyled className={classnames(
                 inChapter && 'inChapter',
@@ -40,7 +41,7 @@ export const HeaderView = ({user, removeAuthUserCallback, inChapter, authPage}: 
                     
                 </Link>
             </LeftContainer>
-            {user ? loggedInHeader({user, removeAuthUserCallback, inChapter}) : loggedOutHeader({inChapter, authPage})}
+            {user ? loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}) : loggedOutHeader({inChapter, authPage})}
         </HeaderStyled>
     )
 }
@@ -71,15 +72,20 @@ function loggedOutHeader({inChapter, authPage}: ILoggedOutHeader) {
   )
 }
 
-function loggedInHeader({user, removeAuthUserCallback, inChapter}: HeaderViewProps) {
+function loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}: HeaderViewProps) {
     return (
         <HeaderLoggedIn>
             {/*<Link to="/terms">*/}
             {/*    <HeaderMenuItem>TERMS</HeaderMenuItem>*/}
             {/*</Link>*/}
-            <div className={inChapter? 'inChapter' : 'nav-wrapp'}>
+            <div className={
+                classnames(
+                    inChapter && 'inChapter',
+                    accountPage && 'accountPage',
+                )}>
                 <Link to={`/user/${user?.username}`}>
-                    <HeaderMenuItem>{user?.username}</HeaderMenuItem>
+                    <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>{user?.username}</HeaderMenuItem>
+                    <HeaderMenuIcon className={classnames(user && 'userIconAccount')} />
                 </Link>
                 <Link
                     to="/"
@@ -87,7 +93,8 @@ function loggedInHeader({user, removeAuthUserCallback, inChapter}: HeaderViewPro
                         removeAuthUserCallback()
                     }}
                 >
-                    <HeaderMenuItem>LOGOUT</HeaderMenuItem>
+                    <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>LOGOUT</HeaderMenuItem>
+                    <HeaderMenuIcon className={classnames(user && 'userIconLogout')} />
                 </Link>
             </div>
         </HeaderLoggedIn>

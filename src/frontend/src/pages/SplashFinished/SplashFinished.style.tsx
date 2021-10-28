@@ -15,9 +15,11 @@ export const SplashFinishedContainer = styled.div`
     min-height: 100vh;
   }
 `
+export const EmptyBlock = styled.div``
+
 export const BoxImgLeft = styled.div`
   position: absolute;
-  bottom: 102px;
+  bottom: 99px;
   left: 20%;
   transform: translate(-50%, 0);
   width: 308px;
@@ -31,13 +33,13 @@ export const BoxImgLeft = styled.div`
     height: 441px;
     background-size: contain;
     left: 50%;
-    bottom: 400px;
+    bottom: 396px;
     transform: translate(-50%, 23%);
   }
 `
 export const BoxImgRight = styled.div`
   position: absolute;
-  bottom: 102px;
+  bottom: 99px;
   right: 20%;
   transform: translate(60%, 0);
   width: 215px;
@@ -52,7 +54,7 @@ export const BoxImgRight = styled.div`
 `
 export const Wrapp = styled.div`
   max-width: 430px;
-  margin: 70px auto 0;
+  margin: 140px auto 0;
 
   @media (max-width: 1200px) {
     margin: 114px auto 0;
