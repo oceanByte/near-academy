@@ -8,14 +8,15 @@ import {PublicUser} from "../../../shared/user/PublicUser";
 type FooterViewProps = {
     user?: PublicUser,
     mobileFooter?: boolean | undefined;
+    hideCallback: () => void;
 }
 
-export const ViewMainFooter  = ({user, mobileFooter}: FooterViewProps) => {
+export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewProps) => {
     return (
       <Footer>
         <div className={mobileFooter ? 'mobileFooterWrapp' : 'footer-wrapper'}>
           <div className={'nav-items-mobile'}>
-              <ul>
+              <ul onClick={mobileFooter? () => hideCallback() : () => ({})}>
                 <li className={'nav-item'}><Link to="/">About</Link></li>
                 <li className={'nav-item'}><Link to="/">Referral</Link></li>
                 <li className={'nav-item'}><Link to="/">Terms</Link></li>
@@ -34,7 +35,7 @@ export const ViewMainFooter  = ({user, mobileFooter}: FooterViewProps) => {
           </div> 
           <div className={'social-box'}>
             <div className={'nav-items'}>
-              <ul>
+              <ul onClick={mobileFooter? () => hideCallback() : () => ({})}>
                 <li className={'nav-item'}><Link to="/">About</Link></li>
                 <li className={'nav-item'}><Link to="/">Referral</Link></li>
                 <li className={'nav-item'}><Link to="/">Terms</Link></li>
@@ -44,17 +45,17 @@ export const ViewMainFooter  = ({user, mobileFooter}: FooterViewProps) => {
               <ul>
                 <li className={'nav-item'}>
                   <a href={'https://github.com/near'}>
-                    <img src={'images/main_footer/github.png'} alt="github icon" />
+                    <img src={'/images/main_footer/github.png'} alt="github icon" />
                   </a>
                 </li>
                 <li className={'nav-item'}>
                   <a href={'https://twitter.com/NEARProtocol'}>
-                    <img src={'images/main_footer/twitter.png'} alt="twitter icon" />
+                    <img src={'/images/main_footer/twitter.png'} alt="twitter icon" />
                   </a>
                 </li>
                 <li className={'nav-item'}>
                   <a href={'https://t.me/cryptonear'}>
-                    <img src={'images/main_footer/telegram.png'} alt="telegram icon" />
+                    <img src={'/images/main_footer/telegram.png'} alt="telegram icon" />
                   </a>
                 </li>
               </ul>

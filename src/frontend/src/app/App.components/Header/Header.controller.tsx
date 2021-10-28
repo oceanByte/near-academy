@@ -10,9 +10,10 @@ import { HeaderView } from './Header.view'
 interface IHeader {
   inChapter?: boolean,
   authPage?: boolean,
+  accountPage?: boolean,
 }
 
-export const Header = ({ inChapter, authPage }: IHeader) => {
+export const Header = ({ inChapter, authPage, accountPage }: IHeader) => {
   const dispatch = useDispatch()
   const user = useSelector((state: State) => state.auth.user)
 
@@ -25,6 +26,7 @@ export const Header = ({ inChapter, authPage }: IHeader) => {
     removeAuthUserCallback={removeAuthUserCallback}
     inChapter={inChapter}
     authPage={authPage}
+    accountPage={accountPage}
   />
 }
 

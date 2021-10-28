@@ -13,6 +13,7 @@ type InputProps = {
   inputStatus?: 'success' | 'error'
   isDisabled?: boolean | undefined
   errorMessage?: string
+  isName?: boolean | undefined
 }
 
 export const InputField = ({
@@ -25,6 +26,7 @@ export const InputField = ({
   inputStatus,
   isDisabled,
   errorMessage,
+  isName
 }: InputProps) => {
   return (
     <InputView
@@ -37,6 +39,7 @@ export const InputField = ({
       inputStatus={inputStatus}
       isDisabled={isDisabled}
       errorMessage={errorMessage}
+      isName={isName}
     />
   )
 }

@@ -7,9 +7,14 @@ export const Label = styled.div`
   line-height: 25px;
   color: ${textColorWhite};
 
+  &.isName {
+    color: ${textColorBlack};
+  }
+
   &.disabled {
     color: rgba(255,255,255, .3);
   }
+
 `
 export const InputWrapp = styled.div`
   position: relative;
@@ -29,8 +34,8 @@ export const InputWrapp = styled.div`
     border: 2px solid #4338CA;
   }
 
-  &.disabled {
-    background-color: #13274C;
+  &.isName {
+    background-color: #E2E8F0;
   }
 
   &.success {
@@ -48,7 +53,9 @@ export const InputWrapp = styled.div`
     }
   }
 
-  
+  &.disabled {
+    background-color: #13274C;
+  }
 `
 export const IconBox = styled.div`
   display: none;

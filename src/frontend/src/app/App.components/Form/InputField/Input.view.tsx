@@ -14,6 +14,7 @@ type InputViewProps = {
   inputStatus?: 'success' | 'error'
   isDisabled?: boolean | undefined
   errorMessage?: string
+  isName?: boolean | undefined
 }
 
 export const InputView = ({
@@ -26,15 +27,18 @@ export const InputView = ({
   inputStatus,
   isDisabled,
   errorMessage,
+  isName
 }: InputViewProps) => {
   return (
     <>
-      <Label className={classnames(isDisabled && 'disabled')}>{label}</Label>
+      <Label className={classnames(isDisabled && 'disabled', isName && 'isName')}>{label}</Label>
       <InputWrapp className={
         classnames(
           inputStatus,
-          isDisabled && 'disabled')
-        }>
+          isDisabled && 'disabled',
+          isName && 'isName'
+        )
+      }>
         <Input
           type={type}
           value={value}

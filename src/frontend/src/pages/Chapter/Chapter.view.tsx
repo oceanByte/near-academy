@@ -258,8 +258,6 @@ type ChapterViewProps = {
   previousChapter: string
   proposedSolution: string
   proposedSolutionCallback: (e: string) => void
-  showDiff: boolean
-  isPopup: boolean
   closeIsPopup: () => void
   course?: string
   user?: PublicUser
@@ -273,11 +271,8 @@ export const ChapterView = ({
   validatorState,
   validateCallback,
   solution,
-  isPopup,
-  closeIsPopup,
   proposedSolution,
   proposedSolutionCallback,
-  showDiff,
   course,
   user,
   supports,
@@ -289,21 +284,23 @@ export const ChapterView = ({
 }: ChapterViewProps) => {
   const history = useHistory()
   const [display, setDisplay] = useState('solution')
-  const [editorWidth, setEditorWidth] = useState(0)
   const [editorHeight, setEditorHeight] = useState(0)
-  const [isSaveConfirmPopup, setIsSaveConfirmPopup] = useState<any>(null)
-  const matches = useMediaQuery('(max-width: 998px)')
+  const [isShowPopup, setIsShowPopup] = useState<any>(false)
+  const matches = useMediaQuery('(max-width: 1400px)')
 
   useEffect(() => {
-    if (nextChapter === '/near101/chapter-2' && localStorage.getItem('popupConfirm')) {
-      setIsSaveConfirmPopup(false)
-    } else setIsSaveConfirmPopup(true)
+    
+    setTimeout(() => {
+      if (nextChapter === '/near101/splash-2' && !user) {
+        setIsShowPopup(true)
+      } else setIsShowPopup(false)
+    }, 2000)
   }, [])
 
   let extension = '.rs'
 
-  const closePopupSaveProcess = () => {
-    setIsSaveConfirmPopup(false)
+  const closePopup = () => {
+    setIsShowPopup(false)
     localStorage.setItem('popupConfirm', 'true')
   }
 
@@ -311,14 +308,8 @@ export const ChapterView = ({
 
   const PopupPortal = ReactDOM.createPortal(
     <Popup
-      closePopup={closePopupSaveProcess}
-      buttonTextClose={'Continue without account'}
-      buttonText={'Sign up'}
-      img={'/images/chap_5_0.png'}
-      isImage={false}
-      link={'/login'}
-      title={''}
-      text={'Create an account to save your progress and earn your certificate'}
+      closePopup={closePopup}
+      open={isShowPopup}
     />,
     rootElement,
   )
@@ -334,19 +325,8 @@ export const ChapterView = ({
 
   return (
     <div>
-      {nextChapter === '/near101/chapter-2' && !user && isSaveConfirmPopup ? PopupPortal : null}
-      {isPopup ? (
-        <Popup
-          closePopup={closeIsPopup}
-          buttonText={nextChapter !== '/sign-up' ? 'Next Chapter' : 'Get certificate'}
-          buttonTextClose={'Close'}
-          link={nextChapter}
-          img={'/icons/dog.svg'}
-          isImage={true}
-          title={'Success'}
-          text={'Congratulations'}
-        />
-      ) : null}
+      {isShowPopup ? PopupPortal : null}
+
       <ChapterStyled>
         <ChapterCourse>
           <Header inChapter />
@@ -392,7 +372,7 @@ export const ChapterView = ({
               </div>
               <BottomItems>
                 <ButtonsShowResult
-                  isBack
+                  isBack={previousChapter !== '/'}
                   validatorState={validatorState}
                   validateCallback={validateCallback}
                   nextStep={nextStep}
@@ -402,13 +382,14 @@ export const ChapterView = ({
             </Wrapp>
           ) : (
             <div>
-              {display === 'solution' ? (
-                <MonacoContainer>
+              <MonacoContainer>
                   <div className={'btnContainer'}>
                     <ButtonsShowResult
+                      isBack={previousChapter !== '/'}
                       validatorState={validatorState}
                       validateCallback={validateCallback}
                       nextStep={nextStep}
+                      backStep={backStep}
                     />
                   </div>
                   <MonacoEditor
@@ -417,11 +398,6 @@ export const ChapterView = ({
                     proposedSolutionCallback={proposedSolutionCallback}
                   />
                 </MonacoContainer>
-              ) : (
-                <ChapterMonaco>
-                  <MonacoEditorSupport height={editorHeight} support={supports[display]} />
-                </ChapterMonaco>
-              )}
             </div>
           )}
         </ChapterFixed>
@@ -436,8 +412,6 @@ ChapterView.propTypes = {
   solution: PropTypes.string,
   nextChapter: PropTypes.string,
   proposedSolution: PropTypes.string,
-  showDiff: PropTypes.bool.isRequired,
-  isPopup: PropTypes.bool,
   closeIsPopup: PropTypes.func,
   proposedSolutionCallback: PropTypes.func.isRequired,
   course: PropTypes.string,

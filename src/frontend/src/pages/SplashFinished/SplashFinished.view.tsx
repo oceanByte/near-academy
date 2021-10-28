@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect, ChangeEvent, SyntheticEvent, } from 'react'
 import * as PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 
 import classnames from 'classnames';
 
@@ -12,7 +13,7 @@ import { Header } from 'app/App.components/Header/Header.controller'
 import { MainFooter } from 'app/App.components/MainFooter/MainFooter.controller'
 import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 
-import { BoxLogo, FormWrapp, Row, SplashFinishedContainer, SubTitle, Title, Wrapp, WrappForm, BtnContainer, BoxImgLeft, BoxImgRight } from './SplashFinished.style'
+import { BoxLogo, FormWrapp, Row, SplashFinishedContainer, SubTitle, Title, Wrapp, WrappForm, BtnContainer, BoxImgLeft, BoxImgRight, EmptyBlock } from './SplashFinished.style'
 import { Button } from 'app/App.components/Button/Button.controller';
 import { Link } from 'react-router-dom';
 
@@ -31,6 +32,7 @@ interface ISignUpSchema {
 }
 
 export const SplashFinishedView = ({ user, loading, signUpCallback }: SplashFinishedViewProps) => {
+  const history = useHistory()
   const [form, setForm] = useState<FormInputs>({
     username: { value: '' },
     email: { value: '' },
@@ -80,16 +82,15 @@ export const SplashFinishedView = ({ user, loading, signUpCallback }: SplashFini
     else setForm(updatedForm)
   }
 
-  /* const handleSubmit = (values: ISignUpSchema) => {
-    signUpCallback(values);
-  } */
+
   const getCertificate = () => {
-    console.log('Certificate');
+    history.push(`/user/${user?.username}`)
   }
 
   return (
     <SplashFinishedContainer className={classnames(user && 'isUser')}>
       <Header authPage />
+      <EmptyBlock />
       <Wrapp>
         <BoxLogo />
         <Title>Congratulations!</Title>

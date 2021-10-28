@@ -12,7 +12,7 @@ import { State } from 'reducers'
 import { CourseData } from '../Course/Course.controller'
 import { chaptersByCourse, courseData } from '../Course/Course.data'
 import { chapterData } from '../Courses/near101/Chapters/Chapters.data'
-import { addProgress } from './Chapter.actions'
+import { addLocalProgress, addProgress } from './Chapter.actions'
 import { PENDING, RIGHT, WRONG } from './Chapter.constants'
 import { ChapterLocked } from './Chapter.style'
 import { ChapterView } from './Chapter.view'
@@ -43,7 +43,6 @@ export interface Data {
 
 export const Chapter = () => {
   const [validatorState, setValidatorState] = useState(PENDING)
-  const [showDiff, setShowDiff] = useState(false)
   const [isPopup, setIsPopup] = useState(false)
   const { pathname } = useLocation()
   const [data, setData] = useState<Data>({
@@ -120,6 +119,7 @@ export const Chapter = () => {
     if (pathname === '/near101/chapter-8') {
       setValidatorState(RIGHT)
       if (user) dispatch(addProgress({ chapterDone: pathname }))
+      else dispatch(addLocalProgress({ chapterDone: pathname }))
       /* setIsPopup(true) */
       return
     }
@@ -142,34 +142,28 @@ export const Chapter = () => {
         setValidatorState(RIGHT)
         /* setIsPopup(true) */
         if (user) dispatch(addProgress({ chapterDone: pathname }))
+        else dispatch(addLocalProgress({ chapterDone: pathname }))
         /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
       } else setValidatorState(WRONG)
     } else {
-      if (showDiff) {
-        setShowDiff(false)
-        setValidatorState(PENDING)
-      } else {
-        setShowDiff(true)
-        if (data.exercise && data.solution) {
-          if (
-            // @ts-ignore
-            data.exercise.replace(/\s+|\/\/ Type your solution below/g, '') ===
-            // @ts-ignore
-            data.solution.replace(/\s+|\/\/ Type your solution below/g, '')
-          ) {
-            setValidatorState(RIGHT)
-            /* setIsPopup(true) */
-            if (user) dispatch(addProgress({ chapterDone: pathname }))
-            /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
-          } else if (pathname === '/near101/chapter-3' && data.exercise.match(/^[a-z0-9_-]*.testnet/gm)) {
-            setShowDiff(false)
-            setValidatorState(RIGHT)
-            /* setIsPopup(true) */
-            if (user) dispatch(addProgress({ chapterDone: pathname }))
-            /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
-          } else setValidatorState(WRONG)
+      if (data.exercise && data.solution) {
+        if (
+          // @ts-ignore
+          data.exercise.replace(/\s+|\/\/ Type your solution below/g, '') ===
+          // @ts-ignore
+          data.solution.replace(/\s+|\/\/ Type your solution below/g, '')
+        ) {
+          setValidatorState(RIGHT)
+          /* setIsPopup(true) */
+          if (user) dispatch(addProgress({ chapterDone: pathname }))
+          else dispatch(addLocalProgress({ chapterDone: pathname }))
+        } else if (pathname === '/near101/chapter-3' && data.exercise.match(/^[a-z0-9_-]*.testnet/gm)) {
+          setValidatorState(RIGHT)
+          /* setIsPopup(true) */
+          if (user) dispatch(addProgress({ chapterDone: pathname }))
+          else dispatch(addLocalProgress({ chapterDone: pathname }))
         } else setValidatorState(WRONG)
-      }
+      } else setValidatorState(WRONG)
     }
   }
 
@@ -199,8 +193,6 @@ export const Chapter = () => {
             solution={data.solution}
             proposedSolution={data.exercise}
             proposedSolutionCallback={proposedSolutionCallback}
-            showDiff={showDiff}
-            isPopup={isPopup}
             course={data.course}
             closeIsPopup={() => setIsPopup(false)}
             user={user}

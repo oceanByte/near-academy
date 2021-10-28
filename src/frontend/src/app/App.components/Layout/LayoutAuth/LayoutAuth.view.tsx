@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Header } from '../Header/Header.controller';
-import { CloseBtn, FormContainer, ImgContainer, Wrapp } from './Layout.style';
+import { Header } from '../../Header/Header.controller';
+import { CloseBtn, FormContainer, ImgContainer, Wrapp } from './LayoutAuth.style';
 
 
-export const LayoutViewAuth = ({ children }: any) => {
+export const LayoutAuthView = ({ children }: any) => {
   const history = useHistory()
   return (
     <Wrapp>

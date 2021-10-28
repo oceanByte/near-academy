@@ -5,6 +5,11 @@ import { textColorMenuItemNumber } from 'styles'
 export const ButtonsShowResult = styled.div`
   width: 100%;
   padding-bottom: 38px;
+
+  @media (max-width: 1400px) {
+    padding-bottom: 0;
+  }
+
   .feedback {
     position: absolute;
     bottom: 150px;
@@ -32,6 +37,7 @@ export const BtnsContainer = styled.div`
   .rightBtns {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
   }
   
 
