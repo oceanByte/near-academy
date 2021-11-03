@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { useMediaQuery } from '@react-hook/media-query'
+import classnames from 'classnames'
+
 import { Button } from '../Button/Button.controller'
 import { RIGHT, WRONG } from '../../../pages/Chapter/Chapter.constants'
 import { BtnsContainer, ButtonsShowResult, ErrorMessage } from './ButtonsShowResult.style'
@@ -48,7 +50,7 @@ export const ButtonsShowResultView = ({
               </>
             )}
           </div>
-          <div className={'nextBtn'} onClick={nextStep}>Next</div>
+          <div className={classnames('nextBtn', validatorState === RIGHT && 'right')} onClick={nextStep}>Next</div>
         </div>
       </BtnsContainer>
       

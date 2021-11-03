@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 import { useHistory } from 'react-router-dom'
 import { useMediaQuery } from '@react-hook/media-query'
-import Editor, { ControlledEditor, monaco } from '@monaco-editor/react'
+import Editor, { ControlledEditor, DiffEditor, monaco } from '@monaco-editor/react'
 import * as PropTypes from 'prop-types'
 
 import useIsMounted from 'ismounted'
@@ -162,6 +162,33 @@ const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, heigh
   )
 }
 
+const MonacoDiff = ({ solution, proposedSolution, height }: any) => {
+  return (
+    <div>
+      <DiffEditor
+        height={height ? height : '600px'}
+        original={proposedSolution}
+        modified={solution}
+        language="rust"
+        // @ts-ignore
+        theme="vs-dark"
+        options={{
+          lineNumbers: true,
+          scrollBeyondLastLine: false,
+          minimap: { enabled: false },
+          scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0 },
+          folding: true,
+          readOnly: false,
+          fontSize: 14,
+          fontFamily: 'Proxima Nova',
+          renderSideBySide: false,
+          wordWrap: true,
+        }}
+      />
+    </div>
+  )
+}
+
 // Provides user with feedback after incorrect exploration
 let triggerAnim = function () {
   const myTry = document.getElementById('try')!
@@ -259,6 +286,7 @@ type ChapterViewProps = {
   proposedSolution: string
   proposedSolutionCallback: (e: string) => void
   closeIsPopup: () => void
+  showDiff: boolean
   course?: string
   user?: PublicUser
   supports: Record<string, string | undefined>
@@ -275,6 +303,7 @@ export const ChapterView = ({
   proposedSolutionCallback,
   course,
   user,
+  showDiff,
   supports,
   questions,
   nextChapter,
@@ -402,11 +431,19 @@ export const ChapterView = ({
                       backStep={backStep}
                     />
                   </div>
-                  <MonacoEditor
-                    height={matches? '800px' : '100vh'}
-                    proposedSolution={proposedSolution}
-                    proposedSolutionCallback={proposedSolutionCallback}
-                  />
+                  {showDiff ? (
+                    <MonacoDiff
+                      height={matches? '800px' : '100vh'}
+                      solution={solution}
+                      proposedSolution={proposedSolution}
+                    />
+                  ) : (
+                    <MonacoEditor
+                      height={matches? '800px' : '100vh'}
+                      proposedSolution={proposedSolution}
+                      proposedSolutionCallback={proposedSolutionCallback}
+                    />
+                  )}
                 </MonacoContainer>
             </div>
           )}
@@ -419,6 +456,7 @@ export const ChapterView = ({
 ChapterView.propTypes = {
   validatorState: PropTypes.string,
   validateCallback: PropTypes.func.isRequired,
+  showDiff: PropTypes.bool.isRequired,
   solution: PropTypes.string,
   nextChapter: PropTypes.string,
   proposedSolution: PropTypes.string,

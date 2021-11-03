@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { textColorMenuItemNumber } from 'styles'
+import { textColorMenuItemNumber, textColorWhite } from 'styles'
 
 
 export const ButtonsShowResult = styled.div`
@@ -52,6 +52,11 @@ export const BtnsContainer = styled.div`
     line-height: 25px;
     color: ${textColorMenuItemNumber};
     cursor: pointer;
+  }
+  .nextBtn {
+    &.right {
+      color: ${textColorWhite};
+    }
   }
 
   .backBtn {

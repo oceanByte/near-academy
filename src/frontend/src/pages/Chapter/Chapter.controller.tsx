@@ -43,6 +43,7 @@ export interface Data {
 
 export const Chapter = () => {
   const [validatorState, setValidatorState] = useState(PENDING)
+  const [showDiff, setShowDiff] = useState(false)
   const [isPopup, setIsPopup] = useState(false)
   const { pathname } = useLocation()
   const [data, setData] = useState<Data>({
@@ -146,24 +147,31 @@ export const Chapter = () => {
         /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
       } else setValidatorState(WRONG)
     } else {
-      if (data.exercise && data.solution) {
-        if (
-          // @ts-ignore
-          data.exercise.replace(/\s+|\/\/ Type your solution below/g, '') ===
-          // @ts-ignore
-          data.solution.replace(/\s+|\/\/ Type your solution below/g, '')
-        ) {
-          setValidatorState(RIGHT)
-          /* setIsPopup(true) */
-          if (user) dispatch(addProgress({ chapterDone: pathname }))
-          else dispatch(addLocalProgress({ chapterDone: pathname }))
-        } else if (pathname === '/near101/chapter-3' && data.exercise.match(/^[a-z0-9_-]*.testnet/gm)) {
-          setValidatorState(RIGHT)
-          /* setIsPopup(true) */
-          if (user) dispatch(addProgress({ chapterDone: pathname }))
-          else dispatch(addLocalProgress({ chapterDone: pathname }))
+      if (showDiff) {
+        setShowDiff(false)
+        setValidatorState(PENDING)
+      } else {
+        setShowDiff(true)
+        if (data.exercise && data.solution) {
+          if (
+            // @ts-ignore
+            data.exercise.replace(/\s+|\/\/ Type your solution below/g, '') ===
+            // @ts-ignore
+            data.solution.replace(/\s+|\/\/ Type your solution below/g, '')
+          ) {
+            setValidatorState(RIGHT)
+            /* setIsPopup(true) */
+            if (user) dispatch(addProgress({ chapterDone: pathname }))
+            else dispatch(addLocalProgress({ chapterDone: pathname }))
+          } else if (pathname === '/near101/chapter-3' && data.exercise.match(/^[a-z0-9_-]*.testnet/gm)) {
+            setShowDiff(false)
+            setValidatorState(RIGHT)
+            /* setIsPopup(true) */
+            if (user) dispatch(addProgress({ chapterDone: pathname }))
+            else dispatch(addLocalProgress({ chapterDone: pathname }))
+          } else setValidatorState(WRONG)
         } else setValidatorState(WRONG)
-      } else setValidatorState(WRONG)
+      }
     }
   }
 
@@ -195,6 +203,7 @@ export const Chapter = () => {
             proposedSolutionCallback={proposedSolutionCallback}
             course={data.course}
             closeIsPopup={() => setIsPopup(false)}
+            showDiff={showDiff}
             user={user}
             supports={data.supports}
             questions={data.questions}
