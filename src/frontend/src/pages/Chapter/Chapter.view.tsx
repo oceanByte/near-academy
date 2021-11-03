@@ -292,10 +292,20 @@ export const ChapterView = ({
     
     setTimeout(() => {
       if (nextChapter === '/near101/splash-2' && !user) {
+        document.body.style.overflow = "hidden";
         setIsShowPopup(true)
-      } else setIsShowPopup(false)
+      } else {
+        document.body.style.overflow = "scroll";
+        setIsShowPopup(false)
+      }
     }, 2000)
   }, [])
+
+  useEffect(() => {
+    if (!isShowPopup) {
+      document.body.style.overflow = "scroll";
+    }
+  }, [isShowPopup])
 
   let extension = '.rs'
 
