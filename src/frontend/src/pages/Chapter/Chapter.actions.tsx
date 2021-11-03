@@ -26,7 +26,6 @@ export const addProgress = ({ chapterDone }: AddProgressInputs) => (dispatch: an
   })
 }
 export const addLocalProgress = ({ chapterDone }: AddProgressInputs) => (dispatch: any) => {
-  console.log(chapterDone);
   dispatch({
     type: ADD_LOCAL_PROGRESS,
     payload: {
