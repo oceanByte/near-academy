@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { near5, textColorBlue, textColorWhite } from 'styles'
+import { textColorBlue, textColorWhite } from 'styles'
 
 export const CheckboxesStyled = styled.div`
   label {

@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-import { bgTextColor, backgroundColorLight, primaryColor, textColorMenuItem, backgroundColorChapter, textColorWhite } from 'styles'
+import { backgroundColorLight, textColorMenuItem, textColorWhite } from 'styles'
 
 export const HeaderStyled = styled.div`
   position: relative;

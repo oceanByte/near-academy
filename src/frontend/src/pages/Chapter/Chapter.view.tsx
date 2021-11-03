@@ -8,7 +8,6 @@ import { useMediaQuery } from '@react-hook/media-query'
 import Editor, { ControlledEditor, DiffEditor, monaco } from '@monaco-editor/react'
 import * as PropTypes from 'prop-types'
 
-import useIsMounted from 'ismounted'
 import Markdown from 'markdown-to-jsx'
 
 // @ts-ignore
@@ -21,14 +20,12 @@ import { Dialog } from 'app/App.components/Dialog/Dialog.controller'
 import { Popup } from 'app/App.components/Popup/Popup.controller'
 import { Button } from '../../app/App.components/Button/Button.controller'
 import { ButtonsShowResult } from '../../app/App.components/ButtonsShowResult/ButtonsShowResult.controller'
-import { FormSevenChapter } from '../../app/App.components/FormSevenChapter/FormSevenChapter.controller'
-import { Input } from '../../app/App.components/Input/Input.controller'
 import { Question } from './Chapter.controller'
 
 import { PublicUser } from 'shared/user/PublicUser'
 import { backgroundColorLight } from 'styles'
 
-import { PENDING, RIGHT, WRONG } from './Chapter.constants'
+import { PENDING, RIGHT } from './Chapter.constants'
 
 //prettier-ignore
 import {
@@ -41,7 +38,6 @@ import {
   ChapterH3,
   ChapterH4,
   ChapterItalic,
-  ChapterMonaco,
   ChapterQuestions,
   ChapterStyled,
   ChapterTab,
@@ -112,30 +108,6 @@ const MonacoReadOnly = ({ children }: any) => {
   )
 }
 
-const MonacoEditorSupport = ({ support, height }: any) => {
-  return (
-    <div>
-      <Editor
-        height={height}
-        value={support}
-        language="rust"
-        theme="vs-dark"
-        options={{
-          lineNumbers: true,
-          scrollBeyondLastLine: false,
-          minimap: { enabled: false },
-          scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0 },
-          folding: true,
-          readOnly: true,
-          fontSize: 14,
-          fontFamily: 'Proxima Nova',
-          wordWrap: true,
-        }}
-      />
-    </div>
-  )
-}
-
 const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, height }: any) => {
   return (
     <div>
@@ -189,14 +161,6 @@ const MonacoDiff = ({ solution, proposedSolution, height }: any) => {
   )
 }
 
-// Provides user with feedback after incorrect exploration
-let triggerAnim = function () {
-  const myTry = document.getElementById('try')!
-  myTry.classList.remove('tryagain')
-  void myTry.offsetWidth
-  myTry.classList.add('tryagain')
-}
-
 const Content = ({ course }: any) => (
   <Markdown
     children={course}
@@ -235,9 +199,6 @@ const Content = ({ course }: any) => (
         },
         Button: {
           component: Button,
-        },
-        Input: {
-          component: Input,
         },
         Highlight: {
           component: Highlight,
@@ -313,7 +274,6 @@ export const ChapterView = ({
 }: ChapterViewProps) => {
   const history = useHistory()
   const [display, setDisplay] = useState('solution')
-  const [editorHeight, setEditorHeight] = useState(0)
   const [isShowPopup, setIsShowPopup] = useState<any>(false)
   const matches = useMediaQuery('(max-width: 1400px)')
 
@@ -328,7 +288,7 @@ export const ChapterView = ({
         setIsShowPopup(false)
       }
     }, 2000)
-  }, [])
+  }, [nextChapter, user])
 
   useEffect(() => {
     if (!isShowPopup) {

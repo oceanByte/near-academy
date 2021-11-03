@@ -1,6 +1,5 @@
 import { Button } from 'app/App.components/Button/Button.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
-import { InputSpacer } from 'app/App.components/Input/Input.style'
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 //prettier-ignore
 import { FormInputs, getErrorMessage, getInputStatus, updateFormFromBlur, updateFormFromChange, updateFormFromSubmit } from 'helpers/form'
 import * as PropTypes from 'prop-types'
@@ -48,10 +47,8 @@ export const ForgotPasswordView = ({ forgotPasswordCallback, loading }: ForgotPa
       </ForgotPasswordTitle>
       <ForgotPasswordCard>
         <form onSubmit={handleSubmit}>
-          <Input
-            icon="user"
+          <InputField
             name="usernameOrEmail"
-            placeholder="Username or Email"
             type="text"
             onChange={handleChange}
             value={form.usernameOrEmail.value}
@@ -59,7 +56,6 @@ export const ForgotPasswordView = ({ forgotPasswordCallback, loading }: ForgotPa
             inputStatus={getInputStatus(form.usernameOrEmail)}
             errorMessage={getErrorMessage(form.usernameOrEmail)}
           />
-          <InputSpacer />
           <Button type="submit" text="Submit" icon="forgotPassword" loading={loading} />
         </form>
       </ForgotPasswordCard>

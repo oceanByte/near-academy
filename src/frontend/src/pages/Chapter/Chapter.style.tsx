@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-import { backgroundColorChapter, downColor, near3, near6, okColor, primaryColor, subTextColor, textColor, textColorBlue, textColorWhite } from 'styles'
+import { backgroundColorChapter, near3, primaryColor, subTextColor, textColor, textColorBlue, textColorWhite } from 'styles'
 
 export const HiddenBlock = styled.div`
   width: 100%;

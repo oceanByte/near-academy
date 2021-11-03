@@ -1,7 +1,5 @@
 import { Button } from 'app/App.components/Button/Button.controller'
 import { InputField } from 'app/App.components/Form/InputField/Input.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
-import { InputSpacer } from 'app/App.components/Input/Input.style'
 //prettier-ignore
 import { FormInputs, getErrorMessage, getInputStatus, updateFormFromBlur, updateFormFromChange, updateFormFromSubmit } from 'helpers/form'
 import * as PropTypes from 'prop-types'

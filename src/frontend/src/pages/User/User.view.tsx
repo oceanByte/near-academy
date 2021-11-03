@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
 import { Button } from 'app/App.components/Button/Button.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
 
 import { ChapterData } from 'pages/Chapter/Chapter.controller'
 
@@ -89,7 +88,7 @@ export const UserView = ({
             {chapterData.map((chapter: ChapterData, key: number) => {
               const done = user.progress && user.progress.indexOf(chapter.pathname) >= 0
               return (
-                <Item>
+                <Item key={key}>
                   <Link to={chapter.pathname} className={classnames(done && 'checked')}>
                     <span className={'number'}>{key + 1}</span>
                     <span className={'name-link'}>{chapter.name}</span>
@@ -132,21 +131,6 @@ export const UserView = ({
                               onClick={() => issueNftCallback()}
                               color="gradient"
                             />
-                            {/* <AccountNameInput>
-                              <Input
-                                icon="user"
-                                name="account name"
-                                placeholder="NEAR testnet account name"
-                                type="text"
-                                onChange={(e) => {
-                                  setAccountName(e.target.value)
-                                }}
-                                value={accountName}
-                                onBlur={() => { }}
-                                inputStatus={undefined}
-                                errorMessage={undefined}
-                              />
-                            </AccountNameInput> */}
                           </div>
                           ) : (
                           <p className={'pNFT'}>
@@ -155,7 +139,7 @@ export const UserView = ({
                               target="_blank"
                               rel="noopener noreferrer nofollow"
                             >
-                              <ExternalLink>{/* {authUser.accountName} */}dswd</ExternalLink>
+                              <ExternalLink>{authUser.accountName}</ExternalLink>
                             </a>
                           </p>
                         )}
