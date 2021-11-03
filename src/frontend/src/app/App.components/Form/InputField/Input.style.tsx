@@ -41,6 +41,10 @@ export const InputWrapp = styled.div`
   &.success {
     background-color: ${backgroundColorLight};
     border: 2px solid #071C43;
+    input {
+      color: ${textColorBlack};
+    }
+    
     &:focus-within {
       border: 2px solid #4338CA;
     }
@@ -48,6 +52,9 @@ export const InputWrapp = styled.div`
   &.error {
     background-color: #FECDD3;
     border: 2px solid #DC2626;
+    input {
+      color: ${textColorBlack};
+    }
     &:focus-within {
       border: 2px solid #DC2626;
     }
@@ -80,7 +87,7 @@ export const Input = styled.input`
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: normal;
-  color: ${textColorBlack};
+  color: ${textColorWhite};
   font-size: 15px;
   line-height: 22px;
   width: 100%;
