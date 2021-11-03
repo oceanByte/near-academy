@@ -86,6 +86,7 @@ export const BoxText = styled.div`
 `
 export const BottomInnerContainer = styled.div`
   padding-top: 31px;
+  padding-bottom: 50px;
   color: ${textColorWhite};
   display: flex;
   justify-content: space-between;
@@ -263,6 +264,13 @@ export const ButtonsContainer = styled.div`
   }
   .pNFT {
     max-width: 150px;
+    a {
+      margin-left: 5px;
+    }
+    @media (max-width: 576px) {
+      max-width: 100%;
+      margin: 0 auto;
+    }
   }
 
   @media (max-width: 1200px) {
