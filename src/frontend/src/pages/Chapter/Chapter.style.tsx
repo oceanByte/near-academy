@@ -33,6 +33,29 @@ export const ChapterContentWrapp = styled.div`
   line-height: 25px;
   color: ${textColor};
 
+  pre {
+    margin: 19px 0;
+    border-radius: 5px;
+    p {
+      margin: 0;
+    }
+    .hljs {
+      background: #091E44;
+      border-radius: 5px;
+      padding: 16px 20px;
+      font-family: 'DM Mono', monospace;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 17px;
+      line-height: 22px;
+      color: ${textColorWhite};
+
+      & .hljs-keyword {
+        color: ${textColorBlue};
+      }
+    }
+  }
+
   @media (max-width: 1400px) {
     max-width: 100%;
   }
@@ -262,7 +285,7 @@ export const ChapterTab = styled.div<{ isSelected?: boolean }>`
   border-top: 1px solid ${primaryColor};
   border-right: 1px solid ${primaryColor};
   border-left: 1px solid ${primaryColor};
-  background-color: ${(props) => (props.isSelected ? '${primaryColor}' : 'initial')};
+  background-color: ${(props) => (props.isSelected ? `${primaryColor}` : 'initial')};
 `
 
 export const ChapterLocked = styled.div`
@@ -419,7 +442,7 @@ export const SpecialCode = styled.div`
     }
   }
 `
-export const AnimatedCode = styled.div`
+export const AnimatedCode = styled.span`
   animation: flow 10s ease-in-out infinite;
   background: linear-gradient(-60deg, #000, #00c08b, #0072ce, #000);
   background-size: 300%;

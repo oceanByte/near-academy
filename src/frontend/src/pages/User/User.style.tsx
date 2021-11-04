@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { AnimatedCard, backgroundColorLight, FadeInFromTop, primaryColor, subTextColor, textColor, textColorBlue, textColorMenuItemNumber, textColorWhite } from 'styles'
+import { backgroundColorLight, FadeInFromTop, primaryColor, subTextColor, textColor, textColorBlue, textColorMenuItemNumber, textColorWhite } from 'styles'
 
 export const UserStyled = styled.div`
   max-width: 1014px;

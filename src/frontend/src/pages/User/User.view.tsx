@@ -13,7 +13,6 @@ import { PublicUser } from 'shared/user/PublicUser'
 import { chapterData } from '../Courses/near101/Chapters/Chapters.data'
 // prettier-ignore
 import { 
-  AccountNameInput,
   BottomInnerContainer,
   BoxImgLogo,
   BoxText,

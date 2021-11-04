@@ -65,29 +65,29 @@ As we just learned each meme contract lives on a newly created account that was 
 The meme contract contains 12 functions:
 
 <Highlight language="typescript">
-export function init(title: string, data: string, category: Category): void
+export function init(title: string, data: string, category: Category): void;
 
-export function get_meme(): Meme
+export function get_meme(): Meme;
 
-export function vote(value: i8): void
+export function vote(value: i8): void;
 
-export function batch_vote(value: i8, is_batch: bool = true): void
+export function batch_vote(value: i8, is_batch: bool = true): void;
 
-export function get_recent_votes(): Array<Vote>
+export function get_recent_votes(): Array;
 
-export function get_vote_score(): i32
+export function get_vote_score(): i32;
 
-export function add_comment(text: string): void
+export function add_comment(text: string): void;
 
-export function get_recent_comments(): Array<Comment>
+export function get_recent_comments(): Array;
 
-export function donate(): void
+export function donate(): void;
 
-export function get_donations_total(): u128
+export function get_donations_total(): u128;
 
-export function get_recent_donations(): Array<Donation>
+export function get_recent_donations(): Array;
 
-export function release_donations(account: AccountId): void
+export function release_donations(account: AccountId): void;
 </Highlight>
 
 The given functions are written in AssemblyScript. But they could also have been written in Rust or any other language that compiles to Wasm. But it is easier to understand and saves some compiling time than Rust, which is excellent for prototyping and simple contracts.

@@ -20,8 +20,8 @@
 
 Contracts are a set of functions that can read or alter the state of the NEAR Network. They are executed on the NEAR Virtual Machine (VM). A minimal “Hello, World!” code written in AssemblyScript looks like this:
 
-<Highlight language="typescript" showLineNumbers>
-    export function hello(): string {
+<Highlight language="typescript">
+export function hello(): string {
   return 'Hello, World!'
 }
 </Highlight>
@@ -42,6 +42,7 @@ export function hello_you(): string {
   return 'Hello, ' + context.sender + '!'
 }
 </Highlight>
+
 Contract hello_you() does not alter the blockchain state. Still, it requires a call of context, an operation that validator nodes have to carry, and therefore gas to be paid.
 
 Other "call" functions may alter the state of the blockchain. Gas must be paid to the network when invoking these functions.
@@ -54,6 +55,7 @@ export function register_me(): void {
   storage.setString('sender', context.sender)
 }
 </Highlight>
+
 Note that this time, the function does not return anything to view. This is what is indicated by “void”. The null output must be specified in the functions run on NEAR.
 
 ## Action

@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro'
-import { backgroundColorDark } from 'styles'
 
 export const AppStyled = styled.div`
 /*   display: flex;
