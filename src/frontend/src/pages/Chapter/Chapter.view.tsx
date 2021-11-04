@@ -2,11 +2,11 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 import { useEffect, useState } from 'react'
+import * as PropTypes from 'prop-types'
 
 import { useHistory } from 'react-router-dom'
 import { useMediaQuery } from '@react-hook/media-query'
 import Editor, { ControlledEditor, DiffEditor, monaco } from '@monaco-editor/react'
-import * as PropTypes from 'prop-types'
 
 import Markdown from 'markdown-to-jsx'
 
@@ -246,7 +246,6 @@ type ChapterViewProps = {
   previousChapter: string
   proposedSolution: string
   proposedSolutionCallback: (e: string) => void
-  closeIsPopup: () => void
   showDiff: boolean
   course?: string
   user?: PublicUser
@@ -297,6 +296,7 @@ export const ChapterView = ({
   }, [isShowPopup])
 
   let extension = '.rs'
+  const [objQuestion] = questions;
 
   const closePopup = () => {
     setIsShowPopup(false)
@@ -359,6 +359,7 @@ export const ChapterView = ({
                       ) : (<h2>{question.question}</h2>)}
                       <Checkboxes
                         items={question.answers}
+                        proposedResponses={objQuestion.proposedResponses}
                         onUpdate={(selected) => {
                           const proposedQuestions = questions
                           proposedQuestions[i].proposedResponses = selected
@@ -420,7 +421,6 @@ ChapterView.propTypes = {
   solution: PropTypes.string,
   nextChapter: PropTypes.string,
   proposedSolution: PropTypes.string,
-  closeIsPopup: PropTypes.func,
   proposedSolutionCallback: PropTypes.func.isRequired,
   course: PropTypes.string,
   supports: PropTypes.object.isRequired,

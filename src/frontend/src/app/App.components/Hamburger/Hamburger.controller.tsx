@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { HamburgerViewLeft } from './Hamburger.view'
-import { showChapterDrawer, hideChapterDrawer, hideMenuDrawer, showMenuDrawer } from '../Drawer/Drawer.actions'
+import { showChapterDrawer, hideChapterDrawer } from '../Drawer/Drawer.actions'
 import { State } from 'reducers'
 
 type HamburgerLeftProps = {

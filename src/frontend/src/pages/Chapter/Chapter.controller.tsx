@@ -1,21 +1,24 @@
-import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
-import { SUCCESS } from 'app/App.components/Toaster/Toaster.constants'
-import { onDomChange } from 'helpers/domlistener'
-import { getUser } from 'pages/User/User.actions'
 import * as React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+
 import { State } from 'reducers'
 
 import { CourseData } from '../Course/Course.controller'
+
 import { chaptersByCourse, courseData } from '../Course/Course.data'
 import { chapterData } from '../Courses/near101/Chapters/Chapters.data'
+
 import { addLocalProgress, addProgress } from './Chapter.actions'
+import { getUser } from 'pages/User/User.actions'
+
 import { PENDING, RIGHT, WRONG } from './Chapter.constants'
-import { ChapterLocked } from './Chapter.style'
+
 import { ChapterView } from './Chapter.view'
+
+import { ChapterLocked } from './Chapter.style'
 
 export interface ChapterData {
   pathname: string
@@ -44,7 +47,6 @@ export interface Data {
 export const Chapter = () => {
   const [validatorState, setValidatorState] = useState(PENDING)
   const [showDiff, setShowDiff] = useState(false)
-  const [isPopup, setIsPopup] = useState(false)
   const { pathname } = useLocation()
   const [data, setData] = useState<Data>({
     course: undefined,
@@ -88,18 +90,8 @@ export const Chapter = () => {
           })
       })
     })
-  }, [pathname])
+  }, [pathname, user, dispatch])
 
-  onDomChange(() => {
-    const feedbackContainer = document.getElementById('_hj_feedback_container')
-
-    if ((pathname === '/near101/chapter-4' || pathname === '/near101/chapter-8') && feedbackContainer?.style) {
-      console.log(feedbackContainer)
-      feedbackContainer.style.display = 'block'
-    } else if (feedbackContainer?.style) {
-      feedbackContainer.style.display = 'none'
-    }
-  })
 
   chapterData.forEach((chapter, i) => {
     if (pathname === chapter.pathname) {
@@ -145,7 +137,21 @@ export const Chapter = () => {
         if (user) dispatch(addProgress({ chapterDone: pathname }))
         else dispatch(addLocalProgress({ chapterDone: pathname }))
         /* else dispatch(showToaster(SUCCESS, 'Register to save progress', 'and get your completion certificate')) */
-      } else setValidatorState(WRONG)
+      } else {
+        if (showDiff) {
+          const [propsQuestions] = data.questions;
+
+          setData({
+            ...data,
+            questions: [{...propsQuestions, proposedResponses: []}],
+          })
+          setShowDiff(false)
+          setValidatorState(PENDING)
+        } else {
+          setShowDiff(true)
+          setValidatorState(WRONG)
+        }
+      }
     } else {
       if (showDiff) {
         setShowDiff(false)
@@ -160,13 +166,11 @@ export const Chapter = () => {
             data.solution.replace(/\s+|\/\/ Type your solution below/g, '')
           ) {
             setValidatorState(RIGHT)
-            /* setIsPopup(true) */
             if (user) dispatch(addProgress({ chapterDone: pathname }))
             else dispatch(addLocalProgress({ chapterDone: pathname }))
           } else if (pathname === '/near101/chapter-3' && data.exercise.match(/^[a-z0-9_-]*.testnet/gm)) {
             setShowDiff(false)
             setValidatorState(RIGHT)
-            /* setIsPopup(true) */
             if (user) dispatch(addProgress({ chapterDone: pathname }))
             else dispatch(addLocalProgress({ chapterDone: pathname }))
           } else setValidatorState(WRONG)
@@ -202,7 +206,6 @@ export const Chapter = () => {
             proposedSolution={data.exercise}
             proposedSolutionCallback={proposedSolutionCallback}
             course={data.course}
-            closeIsPopup={() => setIsPopup(false)}
             showDiff={showDiff}
             user={user}
             supports={data.supports}

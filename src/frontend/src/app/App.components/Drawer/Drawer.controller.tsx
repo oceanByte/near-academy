@@ -5,8 +5,8 @@ import { useLocation } from 'react-router-dom'
 import { State } from 'reducers'
 import { Option } from '../Select/Select.view'
 
-import { hideChapterDrawer, hideMenuDrawer } from './Drawer.actions'
-import { ChapterDrawerView, LoginDrawerView } from './Drawer.view'
+import { hideChapterDrawer } from './Drawer.actions'
+import { ChapterDrawerView } from './Drawer.view'
 
 export const ChapterDrawer = () => {
   const dispatch = useDispatch()
@@ -36,27 +36,6 @@ export const ChapterDrawer = () => {
       pathname={pathname}
       activeCourse={activeCourse}
       changeCourseCallback={changeCourseCallback}
-    />
-  )
-}
-
-export const LoginDrawer = () => {
-  const dispatch = useDispatch()
-  const showingMenu = useSelector((state: State) => state.loginDrawer && state.loginDrawer.showingMenu)
-  const user = useSelector((state: State) => state && state.auth && state.auth.user)
-
-  const hideCallback = () => {
-    dispatch(hideMenuDrawer())
-  }
-
-  function removeAuthUserCallback() { }
-
-  return (
-    <LoginDrawerView
-      showingMenu={showingMenu}
-      user={user}
-      hideCallback={hideCallback}
-      removeAuthUserCallback={removeAuthUserCallback}
     />
   )
 }

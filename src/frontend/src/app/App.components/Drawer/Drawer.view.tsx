@@ -16,7 +16,7 @@ import { Button } from '../Button/Button.controller'
 import { MainFooter } from '../MainFooter/MainFooter.controller'
 // PLACEHOLDER.
 import { Option } from '../Select/Select.view'
-import { DrawerItem, DrawerMask, DrawerStyled, DrawerStyledLogin } from './Drawer.style'
+import { DrawerItem, DrawerMask, DrawerStyled } from './Drawer.style'
 
 type ChapterDrawerViewProps = {
   showingChapters: boolean
@@ -24,13 +24,6 @@ type ChapterDrawerViewProps = {
   pathname: string
   changeCourseCallback: (e: Option) => void
   activeCourse: Option
-}
-
-type LoginDrawerViewProps = {
-  showingMenu: boolean
-  user: PublicUser
-  hideCallback: () => void
-  removeAuthUserCallback: () => void
 }
 
 type LoggedInDrawerViewProps = {
@@ -112,57 +105,6 @@ export const ChapterDrawerView = ({
   )
 }
 
-export const LoginDrawerView = ({ showingMenu, user, hideCallback, removeAuthUserCallback }: LoginDrawerViewProps) => (
-  <>
-    <DrawerMask className={`${showingMenu}`} onClick={() => hideCallback()} />
-    {user ? loggedInDrawer({ showingMenu, user, removeAuthUserCallback }) : loggedOutDrawer({ showingMenu })}
-  </>
-)
-
-function loggedInDrawer({ showingMenu, user, removeAuthUserCallback }: LoggedInDrawerViewProps) {
-  return (
-    <DrawerStyledLogin className={`${showingMenu}`}>
-      <h1>Menu</h1>
-      <DrawerItem>
-        <Link to="/terms">TERMS</Link>
-      </DrawerItem>
-
-      <DrawerItem>
-        <Link to={`/user/${user?.username}`}>{user?.username}</Link>
-      </DrawerItem>
-
-      <DrawerItem>
-        <Link
-          to="/"
-          onClick={() => {
-            removeAuthUserCallback()
-          }}
-        >
-          LOGOUT
-        </Link>
-      </DrawerItem>
-    </DrawerStyledLogin>
-  )
-}
-
-function loggedOutDrawer({ showingMenu }: LoggedOutDrawerViewProps) {
-  return (
-    <DrawerStyledLogin className={`${showingMenu}`}>
-      <h1>Menu</h1>
-      <DrawerItem>
-        <Link to="/terms">TERMS</Link>
-      </DrawerItem>
-
-      <DrawerItem>
-        <Link to="/sign-up">SIGN UP</Link>
-      </DrawerItem>
-
-      <DrawerItem>
-        <Link to="/login">LOGIN</Link>
-      </DrawerItem>
-    </DrawerStyledLogin>
-  )
-}
 
 ChapterDrawerView.propTypes = {
   showingChapter: PropTypes.bool,
@@ -174,16 +116,4 @@ ChapterDrawerView.propTypes = {
 
 ChapterDrawerView.defaultProps = {
   showingChapter: false,
-}
-
-LoginDrawerView.propTypes = {
-  showingMenu: PropTypes.bool,
-  user: PropTypes.object,
-  hideCallback: PropTypes.func.isRequired,
-  removeAuthUserCallback: PropTypes.func.isRequired,
-}
-
-LoginDrawerView.defaultProps = {
-  showingMenu: false,
-  user: undefined,
 }

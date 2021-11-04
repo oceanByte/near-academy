@@ -19,7 +19,7 @@ export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewPr
               <ul onClick={mobileFooter? () => hideCallback() : () => ({})}>
                 <li className={'nav-item'}><Link to="/">About</Link></li>
                 <li className={'nav-item'}><Link to="/">Referral</Link></li>
-                <li className={'nav-item'}><Link to="/">Terms</Link></li>
+                <li className={'nav-item'}><Link to="/terms">Terms</Link></li>
               </ul>
             </div>
           <div className={'left-box'}>
@@ -27,7 +27,7 @@ export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewPr
                 © NEAR Academy – 2021
             </div>
             <div className={'author-box'}>
-                Designed by <Link to="/">Dan Podkovko</Link>
+                Designed by <Link to="/">NEAR Education team</Link>
             </div>
           </div> 
           <div className={'logo-footer'}>
@@ -38,7 +38,7 @@ export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewPr
               <ul onClick={mobileFooter? () => hideCallback() : () => ({})}>
                 <li className={'nav-item'}><Link to="/">About</Link></li>
                 <li className={'nav-item'}><Link to="/">Referral</Link></li>
-                <li className={'nav-item'}><Link to="/">Terms</Link></li>
+                <li className={'nav-item'}><Link to="/terms">Terms</Link></li>
               </ul>
             </div>
             <div className={'social-items'}>
