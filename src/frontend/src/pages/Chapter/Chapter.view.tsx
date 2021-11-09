@@ -42,7 +42,6 @@ import {
   ChapterStyled,
   ChapterTab,
   QuoteContainer,
-  HiddenBlock,
   MonacoContainer,
   narrativeText,
   Spacer,
@@ -55,7 +54,8 @@ import {
   BackgroundContainer,
   Difficulty,
   ImageContainer,
-  SpecialCode
+  SpecialCode,
+  MonacoWrrap
 } from './Chapter.style'
 
 
@@ -108,7 +108,7 @@ const MonacoReadOnly = ({ children }: any) => {
   )
 }
 
-const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, height }: any) => {
+const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, height, fontSize }: any) => {
   return (
     <div>
       <ControlledEditor
@@ -125,7 +125,7 @@ const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, heigh
           scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0 },
           folding: true,
           readOnly: false,
-          fontSize: 14,
+          fontSize,
           fontFamily: 'Proxima Nova',
           wordWrap: true,
         }}
@@ -134,7 +134,7 @@ const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, heigh
   )
 }
 
-const MonacoDiff = ({ solution, proposedSolution, height }: any) => {
+const MonacoDiff = ({ solution, proposedSolution, height, fontSize }: any) => {
   return (
     <div>
       <DiffEditor
@@ -151,7 +151,7 @@ const MonacoDiff = ({ solution, proposedSolution, height }: any) => {
           scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0 },
           folding: true,
           readOnly: false,
-          fontSize: 14,
+          fontSize,
           fontFamily: 'Proxima Nova',
           renderSideBySide: false,
           wordWrap: true,
@@ -275,18 +275,20 @@ export const ChapterView = ({
   const [display, setDisplay] = useState('solution')
   const [isShowPopup, setIsShowPopup] = useState<any>(false)
   const matches = useMediaQuery('(max-width: 1400px)')
+  const matchesMobile = useMediaQuery('(max-width: 768px)')
+  const matchesLarge = useMediaQuery('(min-width: 1920px)')
 
   useEffect(() => {
     
     setTimeout(() => {
-      if (nextChapter === '/near101/splash-2' && !user) {
+      if (nextChapter === '/near101/splash-3' && !user) {
         document.body.style.overflow = "hidden";
         setIsShowPopup(true)
       } else {
         document.body.style.overflow = "scroll";
         setIsShowPopup(false)
       }
-    }, 2000)
+    }, 4000)
   }, [nextChapter, user])
 
   useEffect(() => {
@@ -334,7 +336,6 @@ export const ChapterView = ({
             <Content course={course || ''} />
           </ChapterContentWrapp>
         </ChapterCourse>
-        <HiddenBlock />
         <ChapterFixed>
           {Object.keys(supports).length > 0 && (
             <div>
@@ -381,7 +382,7 @@ export const ChapterView = ({
               </BottomItems>
             </Wrapp>
           ) : (
-            <div>
+            <MonacoWrrap>
               <MonacoContainer>
                   <div className={'btnContainer'}>
                     <ButtonsShowResult
@@ -395,18 +396,20 @@ export const ChapterView = ({
                   {showDiff ? (
                     <MonacoDiff
                       height={matches? '800px' : '100vh'}
+                      fontSize={matchesMobile? 14 : matchesLarge ? 20 : 17}
                       solution={solution}
                       proposedSolution={proposedSolution}
                     />
                   ) : (
                     <MonacoEditor
                       height={matches? '800px' : '100vh'}
+                      fontSize={matchesMobile? 14 : matchesLarge ? 20 : 17}
                       proposedSolution={proposedSolution}
                       proposedSolutionCallback={proposedSolutionCallback}
                     />
                   )}
                 </MonacoContainer>
-            </div>
+            </MonacoWrrap>
           )}
         </ChapterFixed>
       </ChapterStyled>

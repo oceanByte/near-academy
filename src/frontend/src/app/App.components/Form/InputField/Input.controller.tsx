@@ -12,7 +12,7 @@ type InputProps = {
   type: string
   inputStatus?: 'success' | 'error'
   isDisabled?: boolean | undefined
-  errorMessage?: string
+  errorMessage?: string | false | undefined
   isName?: boolean | undefined
 }
 
@@ -53,13 +53,12 @@ InputField.propTypes = {
   type: PropTypes.string,
   inputStatus: PropTypes.string,
   isDisabled: PropTypes.bool,
-  errorMessage: PropTypes.string,
 }
 
 InputField.defaultProps = {
   label: undefined,
   name: undefined,
   value: undefined,
-  inputStatus: undefined,
+  inputStatus: '',
   type: 'text',
 }

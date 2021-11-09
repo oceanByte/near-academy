@@ -17,6 +17,7 @@ export const SignUpCard = styled.div`
     line-height: 22px;
     color: ${textColor};
     text-align: center;
+    padding-bottom: 30px;
 
     a {
       margin-left: 2px;
@@ -41,9 +42,6 @@ export const SignUpTitle = styled(FadeInFromTop)`
     margin: 0;
   }
 
-  @media (max-width: 998px) {
-    margin-top: 35px;
-  }
 `
 
 export const Row = styled.div`

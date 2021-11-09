@@ -2,30 +2,31 @@ import styled from 'styled-components/macro'
 
 import { backgroundColorChapter, near3, primaryColor, subTextColor, textColor, textColorBlue, textColorWhite } from 'styles'
 
-export const HiddenBlock = styled.div`
-  width: 100%;
-  @media (max-width: 1400px) {
-    display: none;
-  }
-`
-
 export const ChapterStyled = styled.div`
   display: flex;
+  justify-content: flex-start;
 
   @media (max-width: 1400px) {
     flex-direction: column;
   }
 `
 export const ChapterCourse = styled.div`
-  max-width: 960px;
+  max-width: calc(660px + (960 - 660) * ((100vw - 1300px) / (1920 - 1300)));
   width: 100%;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1300px) {
     max-width: 100%;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: calc(960px + (960 - 660)*((100vw - 1920px) / (1920 - 960)));
+  }
+
+  @media (min-width: 2300px) {
+    max-width: calc(960px + (960 - 660)*((100vw - 1820px) / (1820 - 960)))
   }
 `
 export const ChapterContentWrapp = styled.div`
-  max-width: 751px;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px 60px;
@@ -56,7 +57,10 @@ export const ChapterContentWrapp = styled.div`
     }
   }
 
-  @media (max-width: 1400px) {
+  @media (min-width: 1920px) {
+    font-size: calc(16px + (19 - 16)*((100vw - 320px) / (1920 - 320)));
+  }
+  @media (max-width: 1300px) {
     max-width: 100%;
   }
 
@@ -100,7 +104,6 @@ export const ChapterContainer = styled.div`
 `
 export const QuoteContainer = styled.div`
   display: flex;
-  justify-content: space-between;
 
   img {
     width: 40px;
@@ -114,8 +117,13 @@ export const QuoteContainer = styled.div`
     font-size: 17px;
     line-height: 25px;
     color: rgba(65, 41, 116,.8);
-    max-width: 702px;
     width: 100%;
+  }
+
+  @media (min-width: 1920px) {
+    .quote {
+      font-size: calc(16px + (19 - 16)*((100vw - 320px) / (1920 - 320)));
+    }
   }
 
   @media (max-width: 1400px) {
@@ -150,6 +158,10 @@ export const ChapterH2 = styled.div`
   color: ${subTextColor};
   margin-top: 41px;
   margin-bottom: 13px;
+
+  @media (min-width: 1920px) {
+    font-size: calc(23px + (27 - 24)*((100vw - 320px) / (1920 - 320)));
+  }
 `
 
 export const ChapterH3 = styled.div`
@@ -174,29 +186,32 @@ export const SubTitleMobile = styled(ChapterH3)`
   }
 `
 
+export const MonacoWrrap = styled.div`
+  height: 100%;
+`
+
 export const ChapterFixed = styled.div`
-  max-width: 960px;
+  max-width: calc(660px + (960 - 660) * ((100vw - 1400px) / (1920 - 1400)));
   width: 100%;
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   background-color: ${backgroundColorChapter};
+  padding-top: 70px;
 
-  @media (max-width: 1800px) {
-    max-width: 860px;
+  @media (min-width: 1920px) {
+    max-width: calc(960px + (960 - 660)*((100vw - 1920px) / (1920 - 960)))
   }
-  @media (max-width: 1700px) {
-    max-width: 760px;
-  }
-  @media (max-width: 1600px) {
-    max-width: 660px;
+  @media (min-width: 2300px) {
+    max-width: calc(960px + (960 - 660)*((100vw - 1820px) / (1820 - 960)))
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1300px) {
     max-width: 100%;
     margin: 0 auto;
     position: static;
+    padding-top: 40px;
   }
 `
 
@@ -226,7 +241,7 @@ export const Wrapp = styled.div`
   flex-direction: column;
   justify-content: space-between;
   min-height: 100%;
-  padding: 80px 30px 0 85px;
+  padding: 0 30px 0 85px;
 
   @media (max-width: 1400px) {
     position: relative;
@@ -243,6 +258,7 @@ export const ChapterMonaco = styled.div``
 
 export const MonacoContainer = styled.div`
   position: relative;
+  height: 100%;
 
   .btnContainer {
     position: absolute;

@@ -2,15 +2,27 @@ import styled from "styled-components/macro";
 import { backgroundColorChapter } from "styles";
 
 export const Wrapp = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 722px 1fr;
   min-height: 100vh;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
 `
 export const ImgContainer = styled.div`
-  max-width: 722px;
-  width: 100%;
-  background-image: url('/images/auth/bg-image.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  max-width: 100%;
+  height: 100%;
+  position: relative;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
   @media (max-width: 1200px) {
     display: none;
