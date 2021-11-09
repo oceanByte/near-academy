@@ -27,12 +27,14 @@ export const ChapterCourse = styled.div`
   }
 `
 export const ChapterContentWrapp = styled.div`
+  max-width: 860px;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px 60px;
   font-size: 17px;
   line-height: 25px;
   color: ${textColor};
+  box-sizing: border-box;
 
   pre {
     margin: 19px 0;
@@ -57,12 +59,6 @@ export const ChapterContentWrapp = styled.div`
     }
   }
 
-  @media (min-width: 1920px) {
-    font-size: calc(16px + (19 - 16)*((100vw - 320px) / (1920 - 320)));
-  }
-  @media (max-width: 1300px) {
-    max-width: 100%;
-  }
 
   @media (min-width: 1130px) {
     padding-left: 30px;
@@ -120,12 +116,6 @@ export const QuoteContainer = styled.div`
     width: 100%;
   }
 
-  @media (min-width: 1920px) {
-    .quote {
-      font-size: calc(16px + (19 - 16)*((100vw - 320px) / (1920 - 320)));
-    }
-  }
-
   @media (max-width: 1400px) {
     justify-content: flex-start;
 
@@ -158,10 +148,6 @@ export const ChapterH2 = styled.div`
   color: ${subTextColor};
   margin-top: 41px;
   margin-bottom: 13px;
-
-  @media (min-width: 1920px) {
-    font-size: calc(23px + (27 - 24)*((100vw - 320px) / (1920 - 320)));
-  }
 `
 
 export const ChapterH3 = styled.div`
