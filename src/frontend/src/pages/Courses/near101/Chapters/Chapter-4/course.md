@@ -4,20 +4,6 @@
 
 <Spacer />
 
-<narrativeText style="background: #00C08B;">
-    <div class="image-wrapper">
-        <img alt="story_image_4_0" src="/images/chap_4_0.png">
-    </div>
-    <VerticalAlign>
-        It’s always something to start in a new environment. And you’ve decided to make the best of it.
-        <Spacer />
-        *"You’re all set now. Let’s get to work!"*
-        <Spacer />
-        *"You’ve got your first opportunity to show you know your stuff. Ethan is on vacation, and he deals with the meme inventory. Could you cover for him? Start by getting familiar with the registry… "*
-    </VerticalAlign>
-</narrativeText>
-<Spacer />
-
 You can think of NEAR as an additional truth service that you add to your web application.
 The benefits of adding such a truth service to an App include handling money, ownership and global user identity without banks, lawyers or any other traditional intermediaries.
 
@@ -67,17 +53,6 @@ The goal for gas is to represent a unified measure of resources spent to receive
 
 The cost of each instruction is denominated in "gas" units. Bandwidth is usually measured in bytes, but in the NEAR platform it is converted into gas units using a simple coefficient of overhead which has been estimated on reference hardware.
 
-<Spacer />
-<narrativeText style="background: #0072CE">
-    <div class="image-wrapper">
-        <img alt="story_image_4_2" src="/images/chap_4_2.png">
-    </div>
-    <VerticalAlign>
-        *"Alrighty, I see you’ve still got a hang of it! Awesome, we can start running some code through the near-cli now"*
-        <Spacer />
-        *"Interacting with the network via a terminal is simple and effective."*
-    </VerticalAlign>
-</narrativeText>
 <Spacer />
 
 ## Interact with the Network from your Command Line
