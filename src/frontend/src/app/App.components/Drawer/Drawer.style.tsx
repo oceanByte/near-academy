@@ -54,6 +54,7 @@ export const DrawerStyled = styled.div`
 
     .arrow-box {
       margin-right: 18px;
+      cursor: pointer;
     }
 
     .name-box {

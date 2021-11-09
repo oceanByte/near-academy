@@ -5,10 +5,8 @@ import { textColorBlack, textColorWhite } from 'styles'
 export const SplashContainer = styled.div`
   min-height: 100vh;
   width: 100%;
-  background-image: url('/images/splash/bg.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-image: url('/images/splash/bg_transparent.svg');
+  background-color: #081d42;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +25,7 @@ export const CloseBtn = styled.div`
   right: 40px;
   width: 24px;
   height: 24px;
-  background-image: url('/images/splash/closeBtn.png');
+  background-image: url('/images/splash/close.svg');
   background-repeat: no-repeat;
   background-position: center center;
   cursor: pointer;

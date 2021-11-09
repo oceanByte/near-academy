@@ -13,7 +13,7 @@ type InputViewProps = {
   type: string
   inputStatus?: 'success' | 'error'
   isDisabled?: boolean | undefined
-  errorMessage?: string
+  errorMessage?: string | false | undefined
   isName?: boolean | undefined
 }
 

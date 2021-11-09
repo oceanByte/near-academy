@@ -47,7 +47,9 @@ export const AppRoutes = ({ location }: any) => (
       </LayoutAuthView>
     </Route>
     <Route exact path="/forgot-password">
-      <ForgotPassword />
+      <LayoutAuthView>
+        <ForgotPassword />
+      </LayoutAuthView>
     </Route>
     <Route exact path="/reset-password/:token">
       <ResetPassword />

@@ -8,7 +8,9 @@ export const LayoutAuthView = ({ children }: any) => {
   const history = useHistory()
   return (
     <Wrapp>
-      <ImgContainer />
+      <ImgContainer>
+        <img src="/images/auth/bg-image.jpg" alt="main_img" />
+      </ImgContainer>
       <FormContainer>
         <CloseBtn onClick={() => history.push(`/near101/splash-1`) } />
         <Header authPage />
