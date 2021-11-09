@@ -276,6 +276,7 @@ export const ChapterView = ({
   const [isShowPopup, setIsShowPopup] = useState<any>(false)
   const matches = useMediaQuery('(max-width: 1400px)')
   const matchesMobile = useMediaQuery('(max-width: 768px)')
+  const matchesTablet = useMediaQuery('(max-width: 1300px)')
   const matchesLarge = useMediaQuery('(min-width: 1920px)')
 
   useEffect(() => {
@@ -396,14 +397,14 @@ export const ChapterView = ({
                   {showDiff ? (
                     <MonacoDiff
                       height={matches? '800px' : '100vh'}
-                      fontSize={matchesMobile? 14 : matchesLarge ? 20 : 17}
+                      fontSize={matchesMobile? 14 : matchesTablet ? 15 : matchesLarge ? 20 : 17}
                       solution={solution}
                       proposedSolution={proposedSolution}
                     />
                   ) : (
                     <MonacoEditor
                       height={matches? '800px' : '100vh'}
-                      fontSize={matchesMobile? 14 : matchesLarge ? 20 : 17}
+                      fontSize={matchesMobile ? 14 : matchesTablet ? 15 : matchesLarge ? 20 : 17}
                       proposedSolution={proposedSolution}
                       proposedSolutionCallback={proposedSolutionCallback}
                     />

@@ -4,16 +4,12 @@ import { textColorMenuItemNumber, textColorWhite } from 'styles'
 
 export const ButtonsShowResult = styled.div`
   width: 100%;
-  padding-bottom: 38px;
-
-  @media (max-width: 1400px) {
-    padding-bottom: 0;
-  }
 
   .feedback {
+    transform: translate(-50%, 0);
     position: absolute;
-    bottom: 150px;
-    right: 100px;
+    bottom: 100px;
+    left: 50%;
     z-index: 9999;
 
     @media (max-width: 1300px) {
