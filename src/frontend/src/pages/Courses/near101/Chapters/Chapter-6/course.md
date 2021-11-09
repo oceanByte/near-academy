@@ -4,14 +4,6 @@
 
 <Spacer />
 
-<narrativeText style="background: #0072ce">
-  <div class="image-wrapper">
-    <img alt="story_image_6_0" src="/images/chap_6_0.png">
-  </div>
-  Every day is different, so you’re already onto the next feature to be implemented for the museum with Ethan: an app for visitors to create their own memes and add to the museum.
-  We’re all artists, after all!
-</narrativeText>
-
 <Highlight language="bash">
 git clone https://github.com/oceanByte/near-academy-contracts
 </Highlight>
@@ -118,17 +110,5 @@ This function add\_comment takes a string and saves it in the contract. When don
 
 The contract checks if the comment has a short enough length (a maximum length of 500 chars was chosen). The final line adds the comment to the Meme.
 
-<Spacer />
-<narrativeText style="background: #00C08B;">
-  <div class="image-wrapper">
-    <img alt="story_image_6_1" src="/images/chap_6_1.png">
-  </div>
-  <VerticalAlign>
-    *“I really like what you’re doing!”*
-    <Spacer />
-    *“Now that I think about it, we could even add comment capability to the contract. Can you imagine? This could transform the Meme museum into a social platform, and the community into a social network... How awesome!”*
-  </VerticalAlign>
-</narrativeText>
-  
 ## Exercise
 Check out the add\_comment function in the code snippet of the exercise code box, there are 3 bugs in lines 11 and 12 that need to be fixed.
