@@ -4,6 +4,7 @@ import { textColorMenuItemNumber, textColorWhite } from 'styles'
 
 export const ButtonsShowResult = styled.div`
   width: 100%;
+  padding-bottom: 50px;
 
   .feedback {
     transform: translate(-50%, 0);
