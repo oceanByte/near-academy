@@ -38,6 +38,7 @@ import {
   ChapterH3,
   ChapterH4,
   ChapterItalic,
+  ChapterLi,
   ChapterQuestions,
   ChapterStyled,
   ChapterTab,
@@ -55,7 +56,8 @@ import {
   Difficulty,
   ImageContainer,
   SpecialCode,
-  MonacoWrrap
+  MonacoWrrap,
+  Link
 } from './Chapter.style'
 
 
@@ -172,6 +174,12 @@ const Content = ({ course }: any) => (
         },
         QuoteContainer: {
           component: QuoteContainer,
+        },
+        li: {
+          component: ChapterLi
+        },
+        a: {
+          component: Link
         },
         h1: {
           component: ChapterH1,

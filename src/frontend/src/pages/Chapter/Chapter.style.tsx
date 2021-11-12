@@ -128,7 +128,7 @@ export const ChapterH1 = styled.div`
   margin: 0;
   width: 100%;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 38px;
   line-height: 58px;
   text-align: center;
   color: ${near3};
@@ -160,6 +160,19 @@ export const ChapterH4 = styled.div`
   font-size: 15px;
   line-height: 28px;
   margin: 0;
+`
+
+export const ChapterLi = styled.li`
+margin-left: 20px;
+`
+export const Link = styled.a`
+color: #2866d8;
+cursor: pointer;
+
+&:hover {
+  text-decoration: underline;
+  color: #4e88f2;
+}
 `
 
 export const SubTitleMobile = styled(ChapterH3)`
