@@ -37,7 +37,9 @@ Previous grants have already seen amazing innovation comes to light:
 - <a target="_blank" rel="noreferrer" href="https://narwallets.com/">Narwallets</a> (browser wallet) 
 - <a target="_blank" rel="noreferrer" href="https://www.near-staking.com/">NEAR-Staking.com</a> (validator resources) 
 
+<Spacer />
 If you liked the meme museum theme, you might like some real projects happening in that space, the main ones at time of writing are:
+<Spacer />
 
-- <a target="_blank" rel="noreferrer" href="https://paras.id/">Paras</a>. All-in-one social Digital Art Cards (DAC) marketplace for creators and collectors.
+- <a target="_blank" rel="noreferrer" href="https://paras.id/">Paras</a>. All-in-one social Digital Art Cards (DAC) marketplace for creators and collectors. 
 - <a target="_blank" rel="noreferrer" href="https://mintbase.io/">Mintbase</a>. Global platform that allows anyone, including those with less technical backgrounds, to create their own digital assets verified on multiple blockchains. Mintbase provides creators (minters) with various creative allocation and redemption mechanisms for their customers.
