@@ -1,4 +1,5 @@
-It’s always something to start in a new environment. And you’ve decided to make the best of it.
+Lucky you! Your application was accepted. You’ve landed in Rio de Janeiro and head towards the beach where the museum is located.
+This is your first working day in the Meme Museum. You meet the director of the museum, who gets you set up.
 
 <Spacer />
 
@@ -9,10 +10,7 @@ It’s always something to start in a new environment. And you’ve decided to m
 
   <div class="itemsContainer">
     <div class="item-text">
-      You’re all set now. Let’s get to work! 
-    </div>
-    <div class="item-text">
-      You’ve got your first opportunity to show you know your stuff. Ethan is on vacation, and he deals with the meme inventory. Could you cover for him? Start by getting familiar with the registry…
+     Today we're going to bring you up to speed with the latest stack from NEAR, and get you your work account which you will use for everything from now on.
     </div>
   </div>
 </ContentWrapp>

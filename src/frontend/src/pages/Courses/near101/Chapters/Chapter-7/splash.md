@@ -1,18 +1,15 @@
-It’s always something to start in a new environment. And you’ve decided to make the best of it.
+People from all over the world can be connected through memes they like. Oh wait,... not quite! Before this all works, you have to provide them an easy interface to interact with the contracts, of course. Even in 2029 not everyone is a bash ninja. Ethan has started to create an application already.
 
 <Spacer />
 
 <ContentWrapp>
   <div class="imgContainer">
-    <img alt="story_image_2_0" src="/images/splash/splash-3.png">
+    <img alt="story_image_2_0" src="/images/splash/splash-4.png">
   </div>
 
   <div class="itemsContainer">
     <div class="item-text">
-      You’re all set now. Let’s get to work! 
-    </div>
-    <div class="item-text">
-      You’ve got your first opportunity to show you know your stuff. Ethan is on vacation, and he deals with the meme inventory. Could you cover for him? Start by getting familiar with the registry…
+      I also prefer to work in the terminal. But we also need to think of all the noobs out there…
     </div>
   </div>
 </ContentWrapp>
