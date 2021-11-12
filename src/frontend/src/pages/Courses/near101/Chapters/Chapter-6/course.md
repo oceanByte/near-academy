@@ -19,7 +19,7 @@ Everyone can register to the museum as a contributor. Registration ensures that 
 The museum contract offers a function to deploy a new meme contract to those who have registered at the museum.
 
 <Highlight language="typescript">
-export function add_meme(meme: AccountId, title: string, data: string, category: Category): void
+export function add\_meme(meme: AccountId, title: string, data: string, category: Category): void
 </Highlight>
 
 The first argument, **AccountId**, is simply a string that is used to create a new address for the new meme. If you provide the string “alice” it will deploy the contract to _alice.museum.testnet._ This also means that whitespace and “.” are not allowed for a valid name.
@@ -43,12 +43,12 @@ near call museum.testnet add\_myself\_as\_contributor --accountId YOUR\_ACCOUNT\
 3\. Register your meme. Make sure to use a custom name for the meme. Contracts that already exist cannot be overwritten. Deploying your meme will cost you at least 3 NEAR. You may send more NEAR as a signal of the quality of your meme, of course.
 
 <Highlight language="bash">
-near call museum.testnet add_meme \
+near call museum.testnet add\_meme \
 '{"meme" : "bob", "title" : "god", "data" : "https://9gag.com/gag/ad8K0vj", "category" : 4}' \
---accountId YOUR_ACCOUNT_NAME.testnet --amount 3
+--accountId YOUR\_ACCOUNT\_NAME.testnet --amount 3
 </Highlight>
 
-Once the meme contract is deployed, you can verify that it was created by returning the list of all available memes: <AnimatedCode>near view museum.testnet get_meme_list</AnimatedCode>. You may now also find it on the blockchain explorer, it is in the public domain now.
+Once the meme contract is deployed, you can verify that it was created by returning the list of all available memes: <AnimatedCode>near view museum.testnet get\_meme\_list</AnimatedCode>. You may now also find it on the blockchain explorer, it is in the public domain now.
 
 ## The Meme Contract
 
@@ -59,27 +59,27 @@ The meme contract contains 12 functions:
 <Highlight language="typescript">
 export function init(title: string, data: string, category: Category): void;
 
-export function get_meme(): Meme;
+export function get\_meme(): Meme;
 
 export function vote(value: i8): void;
 
-export function batch_vote(value: i8, is_batch: bool = true): void;
+export function batch\_vote(value: i8, is\_batch: bool = true): void;
 
-export function get_recent_votes(): Array;
+export function get\_recent\_votes(): Array;
 
-export function get_vote_score(): i32;
+export function get\_vote\_score(): i32;
 
-export function add_comment(text: string): void;
+export function add\_comment(text: string): void;
 
-export function get_recent_comments(): Array;
+export function get\_recent\_comments(): Array;
 
 export function donate(): void;
 
-export function get_donations_total(): u128;
+export function get\_donations\_total(): u128;
 
-export function get_recent_donations(): Array;
+export function get\_recent\_donations(): Array;
 
-export function release_donations(account: AccountId): void;
+export function release\_donations(account: AccountId): void;
 </Highlight>
 
 The given functions are written in AssemblyScript. But they could also have been written in Rust or any other language that compiles to Wasm. But it is easier to understand and saves some compiling time than Rust, which is excellent for prototyping and simple contracts.
@@ -88,7 +88,7 @@ You can see that all functions are exported so that they can be called from othe
 
 We can classify these functions into two different kinds of functions: view functions and call functions.
 
-View functions do NOT alter contract state. As we’ve seen before the execution of these functions do not cost any gas. They just read a value from a variable and return it. In this example the vote_score is returned, which represents the total vote score for this specific meme:
+View functions do NOT alter contract state. As we’ve seen before the execution of these functions do not cost any gas. They just read a value from a variable and return it. In this example the vote\_score is returned, which represents the total vote score for this specific meme:
 
 <Highlight language="typescript">
 export function get_vote_score(): i32 {
