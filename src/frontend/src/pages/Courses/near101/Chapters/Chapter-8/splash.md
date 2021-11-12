@@ -1,7 +1,3 @@
-It’s always something to start in a new environment. And you’ve decided to make the best of it.
-
-<Spacer />
-
 <ContentWrapp>
   <div class="imgContainer">
     <img alt="story_image_2_0" src="/images/splash/splash-3.png">
@@ -9,10 +5,10 @@ It’s always something to start in a new environment. And you’ve decided to m
 
   <div class="itemsContainer">
     <div class="item-text">
-      You’re all set now. Let’s get to work! 
+     Oh it’s great i bump into you now. I meant to tell you, everyone at the museum is delighted with your work. We’re so lucky to have you onboard!
     </div>
     <div class="item-text">
-      You’ve got your first opportunity to show you know your stuff. Ethan is on vacation, and he deals with the meme inventory. Could you cover for him? Start by getting familiar with the registry…
+     I’d like you to meet everyone you haven’t met yet. Join us for afterwork, that’s where everyone hangs out at this time!
     </div>
   </div>
 </ContentWrapp>
