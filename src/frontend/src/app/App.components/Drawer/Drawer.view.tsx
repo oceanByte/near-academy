@@ -23,7 +23,8 @@ type ChapterDrawerViewProps = {
   hideCallback: () => void
   pathname: string
   changeCourseCallback: (e: Option) => void
-  activeCourse: Option
+  activeCourse: Option,
+  user?: PublicUser
 }
 
 type LoggedInDrawerViewProps = {
@@ -37,6 +38,7 @@ type LoggedOutDrawerViewProps = {
 }
 
 export const ChapterDrawerView = ({
+  user,
   showingChapters,
   hideCallback,
   pathname,
@@ -74,7 +76,9 @@ export const ChapterDrawerView = ({
         {chaptersByCourse[activeCourse.path].map((chapter: ChapterData, key: number) => {
           let done = false;
 
-          if (progressUserChapter.length) {
+          if (user) {
+            done = user.progress ? user.progress.indexOf(chapter.pathname) >= 0 : false;
+          } else if (progressUserChapter.length) {
             done = progressUserChapter.indexOf(chapter.pathname) >= 0
           }
           return (

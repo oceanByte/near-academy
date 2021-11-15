@@ -17,8 +17,6 @@ export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewPr
         <div className={mobileFooter ? 'mobileFooterWrapp' : 'footer-wrapper'}>
           <div className={'nav-items-mobile'}>
               <ul onClick={mobileFooter? () => hideCallback() : () => ({})}>
-                <li className={'nav-item'}><Link to="/">About</Link></li>
-                <li className={'nav-item'}><Link to="/">Referral</Link></li>
                 <li className={'nav-item'}><Link to="/terms">Terms</Link></li>
               </ul>
             </div>
@@ -36,8 +34,6 @@ export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewPr
           <div className={'social-box'}>
             <div className={'nav-items'}>
               <ul onClick={mobileFooter? () => hideCallback() : () => ({})}>
-                <li className={'nav-item'}><Link to="/">About</Link></li>
-                <li className={'nav-item'}><Link to="/">Referral</Link></li>
                 <li className={'nav-item'}><Link to="/terms">Terms</Link></li>
               </ul>
             </div>
@@ -67,7 +63,7 @@ export const ViewMainFooter  = ({user, mobileFooter, hideCallback}: FooterViewPr
 }
 
 ViewMainFooter.propTypes = {
-    user: PropTypes.object,
+  user: PropTypes.object,
 }
 
 ViewMainFooter.defaultProps = {}

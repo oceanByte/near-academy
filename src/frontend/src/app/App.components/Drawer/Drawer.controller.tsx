@@ -11,6 +11,7 @@ import { ChapterDrawerView } from './Drawer.view'
 export const ChapterDrawer = () => {
   const dispatch = useDispatch()
   const showingChapter = useSelector((state: State) => state.chapterDrawer && state.chapterDrawer.showingChapter)
+  const user = useSelector((state: State) => state.auth.user)
   const { pathname } = useLocation()
 
   let defaultCourse: Option = { name: 'Near 101', path: 'near101' }
@@ -31,6 +32,7 @@ export const ChapterDrawer = () => {
 
   return (
     <ChapterDrawerView
+      user={user}
       showingChapters={showingChapter}
       hideCallback={hideCallback}
       pathname={pathname}

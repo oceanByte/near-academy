@@ -36,7 +36,7 @@ export const HeaderView = ({user, removeAuthUserCallback, inChapter, authPage, a
                     {authPage ? (
                         <HeaderLogo alt="logo" width="179px" src="/images/splash/logo-white.svg"/>
                     ) : (
-                        <HeaderLogo alt="logo" width="179px" src="/logo.svg"/>
+                        <HeaderLogo alt="logo" width="179px" src="/images/header/logo.svg"/>
                     )}
                     
                 </Link>
@@ -80,11 +80,12 @@ function loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}: 
             {/*</Link>*/}
             <div className={
                 classnames(
+                    'nav-wrapp',
                     inChapter && 'inChapter',
                     accountPage && 'accountPage',
                 )}>
                 <Link to={`/user/${user?.username}`}>
-                    <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>{user?.username}</HeaderMenuItem>
+                    <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>User {user?.username}</HeaderMenuItem>
                     <HeaderMenuIcon className={classnames(user && 'userIconAccount')} />
                 </Link>
                 <Link

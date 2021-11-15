@@ -11,7 +11,7 @@ import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 
 import { BtnContainer, Row, SignUpCard, SignUpStyled, SignUpTitle } from './SignUp.style'
 
-const ValidationSchema = Yup.object().shape({
+export const ValidationSchema = Yup.object().shape({
   username: Yup.string()
     .matches(/^[a-zA-Z0-9_]*$/, 'Username can only contain letters, numbers and underscores')
     .min(2, 'Username must be longer than or equal to 2 characters')

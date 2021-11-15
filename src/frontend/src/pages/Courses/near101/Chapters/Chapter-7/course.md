@@ -5,7 +5,7 @@
 
 The contracts have been deployed, you don’t really have to worry about them anymore. Now is the time to focus on the interface and connecting it with the contracts backend. The designs are not available yet but we can keep working on functionality.
 
-<Highlight language="git">
+<Highlight class="language-bash">
 git clone https://github.com/oceanByte/near-academy-museum-frontend
 </Highlight>
 
@@ -17,7 +17,7 @@ As we know there is the museum contract with a function get_meme_list. We called
     <img alt="story_image_7_1" src="/images/chap_7_1.png">
 </ImageContainer>
 
-<Highlight language="javascript">
+<Highlight class="language-javascript">
 import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
 import getConfig from './config'
 
@@ -56,7 +56,7 @@ Looking at index.js, we see that we can achieve our goal with four short functio
 **1. Get the list of all Memes in the Museum**
 We just use the name that was defined for the function in the contract to call it.
 
-<Highlight language="javascript">
+<Highlight class="language-javascript">
 let memeLIst = []
 async function getMemeList() {
   memeList = await window.contract.get_meme_list()
@@ -68,7 +68,7 @@ Since we need to send our query through the network we need to await the answer.
 **2. Get all memes**
 We are almost there. With the full memeList we can start to call the individual contracts and read the details. From the previous chapter we know that each contract is deployed on it’s own account. We need to call different contracts but all of the same kind (meme contracts). So we fill an array with new contracts to use them in the next step.
 
-<Highlight language="javascript">
+<Highlight class="language-javascript">
 const memeContracts = [];
 async function setupMemeContracts() {
    memeList.forEach(meme => {
@@ -86,7 +86,7 @@ console.log(memeContracts)
 **3. Display all memes**
 Here we go. We have all the contracts ready and call the get_meme function for each of them to display the results.
 
-<Highlight language="javascript">
+<Highlight class="language-javascript">
 const memes = []
 async function showMemes() {
   memeContracts.forEach(async (memeContract) => {
@@ -101,7 +101,7 @@ async function showMemes() {
 
 Adding a comment to a Meme is just as easy as calling the function set_comment and providing your text.
 
-<Highlight language="javascript">
+<Highlight class="language-javascript">
 async function setComment(memeIndex, text) {
   const result = await memes[memeIndex].set_comment(text)
   console.log(result)
