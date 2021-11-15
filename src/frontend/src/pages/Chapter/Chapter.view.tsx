@@ -11,7 +11,7 @@ import Editor, { ControlledEditor, DiffEditor, monaco } from '@monaco-editor/rea
 import Markdown from 'markdown-to-jsx'
 
 // @ts-ignore
-import Highlight from 'react-highlight.js'
+import Highlight from 'react-highlight'
 
 import { Header } from 'app/App.components/Header/Header.controller'
 import { Progress } from './Progress/Progress.controller'

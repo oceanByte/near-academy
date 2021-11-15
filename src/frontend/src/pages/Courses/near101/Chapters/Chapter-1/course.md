@@ -90,7 +90,7 @@ Here is your easy win to get started: integrate the payment gateway in line 20 o
 
 adding a payment gateway with NEAR is seamless:
 
-<Highlight language="javascript" style="background-color: rgb(0, 0, 0);">
+<Highlight class="language-javascript" style="background-color: rgb(0, 0, 0);">
     await sender.sendMoney(receiver, amount);
 </Highlight>
 

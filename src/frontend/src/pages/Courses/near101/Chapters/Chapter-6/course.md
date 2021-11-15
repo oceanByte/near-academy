@@ -4,7 +4,7 @@
 
 <Spacer />
 
-<Highlight language="bash">
+<Highlight class="language-bash">
 git clone https://github.com/oceanByte/near-academy-contracts
 </Highlight>
 
@@ -18,7 +18,7 @@ Everyone can register to the museum as a contributor. Registration ensures that 
 
 The museum contract offers a function to deploy a new meme contract to those who have registered at the museum.
 
-<Highlight language="typescript">
+<Highlight class="language-typescript">
 export function add\_meme(meme: AccountId, title: string, data: string, category: Category): void
 </Highlight>
 
@@ -36,13 +36,13 @@ With that, you are ready to create your first meme. It is done in just three sim
 
 2\. Register yourself as a contributor to the museum contract. Make sure to use the accountId that you used when you called near login:
 
-<Highlight language="bash">
+<Highlight class="language-bash">
 near call museum.testnet add\_myself\_as\_contributor --accountId YOUR\_ACCOUNT\_NAME.testnet
 </Highlight>
 
 3\. Register your meme. Make sure to use a custom name for the meme. Contracts that already exist cannot be overwritten. Deploying your meme will cost you at least 3 NEAR. You may send more NEAR as a signal of the quality of your meme, of course.
 
-<Highlight language="bash">
+<Highlight class="language-bash">
 near call museum.testnet add\_meme \
 '{"meme" : "bob", "title" : "god", "data" : "https://9gag.com/gag/ad8K0vj", "category" : 4}' \
 --accountId YOUR\_ACCOUNT\_NAME.testnet --amount 3
@@ -56,7 +56,7 @@ As we just learned each meme contract lives on a newly created account that was 
 
 The meme contract contains 12 functions:
 
-<Highlight language="typescript">
+<Highlight class="language-typescript">
 export function init(title: string, data: string, category: Category): void;
 
 export function get\_meme(): Meme;
@@ -90,7 +90,7 @@ We can classify these functions into two different kinds of functions: view func
 
 View functions do NOT alter contract state. As we’ve seen before the execution of these functions do not cost any gas. They just read a value from a variable and return it. In this example the vote\_score is returned, which represents the total vote score for this specific meme:
 
-<Highlight language="typescript">
+<Highlight class="language-typescript">
 export function get_vote_score(): i32 {
   assert_contract_is_initialized()
   return Meme.get().vote_score
@@ -98,7 +98,7 @@ export function get_vote_score(): i32 {
 </Highlight>
 Call functions are the ones that alter a contract state. This means that something is saved on the blockchain. These operations have a gas cost attached to them that is proportional to the complexity of the computation. Remember validators are working for you behind the scene, and they must be rewarded for their validation work.
 
-<Highlight language="typescript">
+<Highlight class="language-typescript">
 export function add_comment(text: string): void {
   assert_contract_is_initialized()
   assert(context.sender == context.predecessor, 'Users must comment directly')
