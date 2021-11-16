@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime'
 import * as React from 'react'
 import ReactGA from 'react-ga'
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
@@ -13,6 +14,8 @@ import { hotjar } from 'react-hotjar';
 import TagManager from 'react-gtm-module'
 import TwitterConvTrkr from "react-twitter-conversion-tracker";
 import LogRocket from 'logrocket';
+
+import useConnectNear from 'hooks/near.hook'
 
 import './styles/fonts.css'
 
@@ -36,6 +39,9 @@ TwitterConvTrkr.pageView();
 
 
 export const Root = () => {
+
+  useConnectNear();
+
   return (
     <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_RECAPTCHA_SITE_KEY} language="en">
       <GlobalStyle />

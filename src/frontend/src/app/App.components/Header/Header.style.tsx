@@ -96,6 +96,10 @@ export const HeaderLoggedIn = styled.div`
   .accountPage {
     display: flex;
   }
+
+  .connectBtn {
+    cursor: pointer;
+  }
 `
 
 export const HeaderMenuItem = styled.div`

@@ -7,6 +7,8 @@ import { restore } from './App.actions'
 import { showToaster } from './App.components/Toaster/Toaster.actions'
 import { ERROR } from './App.components/Toaster/Toaster.constants'
 
+import { AppContextProvider } from 'providers/context'
+
 const discard = (error: any, _action: any, _retries: any) => {
   const { request, response } = error
   let message = 'Error, please contact support'
@@ -22,7 +24,12 @@ const discard = (error: any, _action: any, _retries: any) => {
 const persistCallback = () => {
   store.dispatch<any>(restore())
   const rootElement = document.getElementById('root')
-  ReactDOM.render(<Root />, rootElement)
+  ReactDOM.render(
+    <AppContextProvider>
+      <Root />
+    </AppContextProvider>,
+    rootElement
+  )
 }
 
 export const storeOfflineConfig = {

@@ -1,5 +1,6 @@
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import classnames from 'classnames'
@@ -9,6 +10,8 @@ import { Button } from 'app/App.components/Button/Button.controller'
 import { ChapterData } from 'pages/Chapter/Chapter.controller'
 
 import { PublicUser } from 'shared/user/PublicUser'
+
+import { AppContext } from 'providers/context'
 
 import { chapterData } from '../Courses/near101/Chapters/Chapters.data'
 // prettier-ignore
@@ -28,6 +31,7 @@ import {
   UserNameContainer,
   UserStyled,
   UserTitle,
+  UserSubTitle,
   BtnContainer,
   ButtonsContainer,
   CertificateItself
@@ -59,19 +63,24 @@ export const UserView = ({
   getCertificateCallback,
   issueNftCallback,
 }: UserViewProps) => {
-
+  const { state: { walletConnection }} = useContext(AppContext);
   let badgeUnlocked = false
   let counter = 0
   user.progress?.forEach((chapter) => {
     counter++
   })
   if (counter >= 8) badgeUnlocked = true
-
+  console.log()
   return (
     <UserStyled>
       <UserTitle>
         <h1>Hey, {user?.username}! Check your progress: </h1>
       </UserTitle>
+      {walletConnection && walletConnection.isSignedIn() ? (
+        <UserSubTitle>
+          <h3>Your wallet address is: {walletConnection.getAccountId()}</h3>
+        </UserSubTitle>
+      ) : null}
       <InnerContainer>
         <TopInnerContainer>
           <BoxImgLogo />

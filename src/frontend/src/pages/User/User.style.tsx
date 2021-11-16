@@ -36,6 +36,28 @@ export const UserTitle = styled(FadeInFromTop)`
     }
   }
 `
+export const UserSubTitle = styled(FadeInFromTop)`
+  color: white;
+
+  h3 {
+    margin: 0;
+    width: 100%;
+    font-size: 23px;
+    line-height: 37px;
+    display: block;
+  }
+  
+
+  @media (max-width: 1200px) {
+    h3 {
+      font-size: 18px;
+      line-height: 31px;
+      text-align: center;
+      max-width: 332px;
+      margin: 0 auto;
+    }
+  }
+`
 
 export const InnerContainer = styled.div`
   margin-top: 61px;

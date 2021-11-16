@@ -1,9 +1,12 @@
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
+import { useContext } from 'react'
 import {Link} from 'react-router-dom'
 import classnames from 'classnames'
 
 import {PublicUser} from 'shared/user/PublicUser'
+
+import { AppContext } from '../../../providers/context';
 
 import {HamburgerLeft} from '../Hamburger/Hamburger.controller'
 // prettier-ignore
@@ -16,6 +19,7 @@ type HeaderViewProps = {
     inChapter?: boolean,
     authPage?: boolean,
     accountPage?: boolean,
+    state?: any,
 }
 
 interface ILoggedOutHeader {
@@ -25,6 +29,7 @@ interface ILoggedOutHeader {
 
 // Overall Navbar
 export const HeaderView = ({user, removeAuthUserCallback, inChapter, authPage, accountPage}: HeaderViewProps) => {
+    const { state } = useContext(AppContext);
     return (
         <HeaderStyled className={classnames(
                 inChapter && 'inChapter',
@@ -41,7 +46,7 @@ export const HeaderView = ({user, removeAuthUserCallback, inChapter, authPage, a
                     
                 </Link>
             </LeftContainer>
-            {user ? loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}) : loggedOutHeader({inChapter, authPage})}
+            {user ? loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage, state }) : loggedOutHeader({inChapter, authPage})}
         </HeaderStyled>
     )
 }
@@ -72,7 +77,19 @@ function loggedOutHeader({inChapter, authPage}: ILoggedOutHeader) {
   )
 }
 
-function loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}: HeaderViewProps) {
+function loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage, state}: HeaderViewProps) {
+    const loginNear = () => {
+        if (state.walletConnection) {
+            state.walletConnection.requestSignIn()
+        }
+    }
+    const logoutNear = () => {
+        if (state.walletConnection) {
+            state.walletConnection.signOut()
+            window.location.replace(window.location.origin + window.location.pathname)
+        }
+    }
+
     return (
         <HeaderLoggedIn>
             {/*<Link to="/terms">*/}
@@ -84,6 +101,16 @@ function loggedInHeader({user, removeAuthUserCallback, inChapter, accountPage}: 
                     inChapter && 'inChapter',
                     accountPage && 'accountPage',
                 )}>
+                {state.walletConnection && state.walletConnection.isSignedIn() ? (
+                    <div className="connectBtn" onClick={logoutNear}>
+                        <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>Disconnect NEAR</HeaderMenuItem>
+                    </div>
+                ) : (
+                    <div className="connectBtn" onClick={loginNear}>
+                        <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>Connect with NEAR</HeaderMenuItem>
+                    </div>
+                )}
+                
                 <Link to={`/user/${user?.username}`}>
                     <HeaderMenuItem className={classnames((user && accountPage) && 'accountPage')}>{user?.username}</HeaderMenuItem>
                     <HeaderMenuIcon className={classnames(user && 'userIconAccount')} />
