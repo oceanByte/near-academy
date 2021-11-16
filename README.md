@@ -2,22 +2,12 @@
 
 ## How to get started
 
-Open terminal in a current directory and put commands here 
-
-1\. Download project
 ```bash
-git init
-git remote add origin https://github.com/oceanByte/near-academy.git
-git fetch
-git checkout feature/feedback (or another branch)
-```
-
-2\. Setup all dependencies for front-end and back-end
-```bash
+# 1. Download project
+git clone https://github.com/NEAR-Edu/near.academy.git
+cd near-academy
+# 2. Install dependencies for frontend and backend
 yarn
-```
-
-3\. Start development
-```bash
+# 3. Start development
 yarn start
 ```
