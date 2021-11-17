@@ -1,7 +1,6 @@
 import { offline } from '@redux-offline/redux-offline'
 import { routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
-import LogRocket from 'logrocket'
 import { applyMiddleware, compose, createStore, Store } from 'redux'
 import thunk from 'redux-thunk'
 
@@ -26,7 +25,6 @@ export function configureStore(preloadedState: any) {
     reducers(history) as any,
     preloadedState,
     composeEnhancer(
-      applyMiddleware(LogRocket.reduxMiddleware()),
       applyMiddleware(routerMiddleware(history)),
       applyMiddleware(googleAnalytics),
       applyMiddleware(thunk),
