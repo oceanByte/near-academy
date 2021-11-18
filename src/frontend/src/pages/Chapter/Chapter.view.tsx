@@ -95,7 +95,7 @@ const MonacoReadOnly = ({ children }: any) => {
         language="typescript"
         theme="vs-dark"
         options={{
-          lineNumbers: false,
+          lineNumbers: "off",
           scrollBeyondLastLine: false,
           minimap: { enabled: false },
           scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0, alwaysConsumeMouseWheel: false },
@@ -103,7 +103,7 @@ const MonacoReadOnly = ({ children }: any) => {
           readOnly: true,
           fontSize: 14,
           fontFamily: 'Proxima Nova',
-          wordWrap: true,
+          wordWrap: "on",
         }}
       />
     </div>
@@ -121,7 +121,7 @@ const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, heigh
         theme="vs-dark"
         onChange={(_, val) => proposedSolutionCallback(val)}
         options={{
-          lineNumbers: true,
+          lineNumbers: "on",
           scrollBeyondLastLine: false,
           minimap: { enabled: false },
           scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0 },
@@ -129,7 +129,7 @@ const MonacoEditor = ({ proposedSolution, proposedSolutionCallback, width, heigh
           readOnly: false,
           fontSize,
           fontFamily: 'Proxima Nova',
-          wordWrap: true,
+          wordWrap: "on",
         }}
       />
     </div>
@@ -147,7 +147,7 @@ const MonacoDiff = ({ solution, proposedSolution, height, fontSize }: any) => {
         // @ts-ignore
         theme="vs-dark"
         options={{
-          lineNumbers: true,
+          lineNumbers: "on",
           scrollBeyondLastLine: false,
           minimap: { enabled: false },
           scrollbar: { vertical: 'hidden', verticalScrollbarSize: 0 },
@@ -156,7 +156,7 @@ const MonacoDiff = ({ solution, proposedSolution, height, fontSize }: any) => {
           fontSize,
           fontFamily: 'Proxima Nova',
           renderSideBySide: false,
-          wordWrap: true,
+          wordWrap: "on",
         }}
       />
     </div>
@@ -387,6 +387,7 @@ export const ChapterView = ({
                   validateCallback={validateCallback}
                   nextStep={nextStep}
                   backStep={backStep}
+                  isQuestions
                 />
               </BottomItems>
             </Wrapp>
