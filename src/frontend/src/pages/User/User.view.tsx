@@ -1,48 +1,24 @@
+import classnames from 'classnames'
+import { Formik } from 'formik';
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-
-import classnames from 'classnames'
-import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { Button } from 'app/App.components/Button/Button.controller'
-
+import { InputField } from 'app/App.components/Form/InputField/Input.controller'
 import { ChapterData } from 'pages/Chapter/Chapter.controller'
-
 import { PublicUser } from 'shared/user/PublicUser'
 
 import { chapterData } from '../Courses/near101/Chapters/Chapters.data'
 // prettier-ignore
-import { 
-  BottomInnerContainer,
-  BoxImgLogo,
-  BoxText,
-  CertificateContainer,
-  ChaptersContainer,
-  ExternalLink,
-  InnerContainer,
-  Item,
-  NotCompleteBox,
-  TopInnerContainer,
-  UserBadge,
-  UserBadgeButtons,
-  UserNameContainer,
-  UserStyled,
-  UserTitle,
-  BtnContainer,
-  ButtonsContainer,
-  CertificateItself,
-  IssueContainer,
-  Row
-} from './User.style'
-import { InputField } from 'app/App.components/Form/InputField/Input.controller'
+import { BottomInnerContainer, BoxImgLogo, BoxText, BtnContainer, ButtonsContainer, CertificateContainer, CertificateItself, ChaptersContainer, ExternalLink, InnerContainer, IssueContainer, Item, NotCompleteBox, Row, TopInnerContainer, UserBadge, UserBadgeButtons, UserNameContainer, UserStyled, UserTitle } from './User.style'
 
 const ValidationSchema = Yup.object().shape({
   accountName: Yup.string()
-    .matches(/^[a-zA-Z0-9_.-]*$/, 'Account name can contain lowercase characters, digits, characters (_-) can be used as separators')
+    .matches(/^[a-zA-Z0-9_.-]*.testnet$/, 'Account name can contain lowercase characters, digits, characters (_-) can be used as separators and must end with .testnet')
     .min(2, 'Account name must be longer than or equal to 2 characters')
-    .max(64, 'Account name must be shorter than or equal to 64 characters (including .near)')
+    .max(64, 'Account name must be shorter than or equal to 64 characters (including .testnet)')
     .required('This field is required!'),
 });
 
